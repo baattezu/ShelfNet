@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: shelf-net
+  data:
+    mongodb:
+      uri: mongodb://root:secret@localhost:27017/shelfnet?authSource=admin
+      auto-index-creation: true
+
+shelfnet:
+  seed:
+    enabled: true
+
+jwt:
+  secret: shelfnet-super-secret-key-which-should-be-long-enough-1234567890
