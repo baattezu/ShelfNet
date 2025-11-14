@@ -1,10 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import LayoutContainer from "../../components/LayoutContainer";
-import PageHeader from "../../components/PageHeader";
-import services from "../../src/services";
+import LayoutContainer from "../../shared/components/LayoutContainer";
+import PageHeader from "../../shared/components/PageHeader";
+import services from "../../demo-src/services";
 import { useAuth } from "../../hooks/useAuth";
-import { Interaction, Book } from "../../src/models";
+import { Interaction, Book } from "../../demo-src/models";
 
 export default function InteractionsPage() {
   const { session, loading: authLoading, isAuthenticated } = useAuth();

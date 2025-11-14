@@ -1,5 +1,5 @@
-import { Book } from "@/types";
-import { BookCard } from "@/components/ui/BookCard";
+import { Book } from "@/shared/types";
+import { BookCard } from "@/shared/components/ui/BookCard";
 
 interface BooksGridProps {
   books: Book[];

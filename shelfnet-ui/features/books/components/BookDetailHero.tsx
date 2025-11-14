@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { Book } from "@/types";
-import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
+import { Book } from "@/shared/types";
+import { Badge } from "@/shared/components/ui/Badge";
+import { Button } from "@/shared/components/ui/Button";
 
 interface BookDetailHeroProps {
   book: Book;

@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { SearchResult } from "@/types";
-import { Card } from "@/components/ui/Card";
+import { SearchResult } from "@/shared/types";
+import { Card } from "@/shared/components/ui/Card";
 
 interface SearchResultsListProps {
   results: SearchResult[];

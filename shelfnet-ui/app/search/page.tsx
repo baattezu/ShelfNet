@@ -1,11 +1,11 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { SiteLayout } from "@/components/layout/SiteLayout";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Card } from "@/components/ui/Card";
-import { BookCard } from "@/components/ui/BookCard";
-import { Avatar } from "@/components/ui/Avatar";
+import { SiteLayout } from "@/shared/components/layout/SiteLayout";
+import { SectionHeading } from "@/shared/components/ui/SectionHeading";
+import { Card } from "@/shared/components/ui/Card";
+import { BookCard } from "@/shared/components/ui/BookCard";
+import { Avatar } from "@/shared/components/ui/Avatar";
 import { SearchHero } from "@/features/search/components/SearchHero";
 import { SearchResultsList } from "@/features/search/components/SearchResultsList";
 import {
@@ -13,7 +13,7 @@ import {
   communitiesMock,
   globalSearchMock,
   readersMock,
-} from "@/lib/mockData";
+} from "@/shared/lib/mockData";
 
 const filters = [
   { key: "all", label: "Все" },

@@ -15,5 +15,6 @@ public interface UserInteractionRepository extends MongoRepository<UserInteracti
     List<UserInteraction> findByUserId(String userId);
     /** Find interactions for a user and book. */
     List<UserInteraction> findByUserIdAndBookId(String userId, String bookId);
+    /** Find interactions for a book. */
+    List<UserInteraction> findByBookId(String bookId);
 }
-

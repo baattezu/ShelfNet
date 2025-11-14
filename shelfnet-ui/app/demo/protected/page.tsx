@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 import { ShieldCheck, LogOut, Sparkles } from "lucide-react";
-import AuthGuard from "@/src/components/AuthGuard";
-import { useAuth } from "@/src/hooks/useAuth";
+import AuthGuard from "@/demo-src/components/AuthGuard";
+import { useAuth } from "@/demo-src/hooks/useAuth";
 
 export default function ProtectedPage() {
   return (

@@ -1,4 +1,4 @@
-import { Community } from "@/types";
+import { Community } from "@/shared/types";
 import { CommunityCard } from "./CommunityCard";
 
 interface CommunityGridProps {

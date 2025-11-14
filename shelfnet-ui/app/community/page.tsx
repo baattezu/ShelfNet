@@ -1,9 +1,9 @@
-import { SiteLayout } from "@/components/layout/SiteLayout";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Card } from "@/components/ui/Card";
-import { Button } from "@/components/ui/Button";
+import { SiteLayout } from "@/shared/components/layout/SiteLayout";
+import { SectionHeading } from "@/shared/components/ui/SectionHeading";
+import { Card } from "@/shared/components/ui/Card";
+import { Button } from "@/shared/components/ui/Button";
 import { CommunityGrid } from "@/features/community/components/CommunityGrid";
-import { communitiesMock } from "@/lib/mockData";
+import { communitiesMock } from "@/shared/lib/mockData";
 
 const genreTags = [
   "Sci-Fi",

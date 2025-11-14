@@ -1,9 +1,18 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { Input } from "@/components/ui/Input";
-import { Button } from "@/components/ui/Button";
-import type { AuthCredentials } from "@/types";
+import { Input } from "@/shared/components/ui/Input";
+import { Button } from "@/shared/components/ui/Button";
+import type { AuthCredentials } from "@/shared/types";
+import { useRouter } from "next/navigation";
+import useAuth from "../hooks/useAuth";
+import { toast } from "sonner";
+
+export interface RegisterFormData {
+  name: string;
+  email: string;
+  password: string;
+}
 
 interface RegisterFormProps {
   onSubmit?: (
@@ -12,34 +21,82 @@ interface RegisterFormProps {
 }
 
 export function RegisterForm({ onSubmit }: RegisterFormProps) {
+  const router = useRouter();
+  const auth = useAuth();
+
   const [name, setName] = useState("");
+
   const [email, setEmail] = useState("");
+  const [errorEmail, setErrorEmail] = useState<string | null>(null);
+
   const [password, setPassword] = useState("");
+  const [errorPassword, setErrorPassword] = useState<string | null>(null);
+
   const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     setError(null);
-    setSuccess(false);
+    setLoading(true);
 
     if (!name || !email || !password) {
       setError("Заполните все поля");
+      setLoading(false);
       return;
     }
 
     if (!email.includes("@")) {
-      setError("Введите корректный email");
+      setErrorEmail("Введите корректный email");
+      setLoading(false);
       return;
     }
 
     if (password.length < 8) {
-      setError("Пароль должен быть не менее 8 символов");
+      setErrorPassword("Пароль должен быть не менее 8 символов");
+      setLoading(false);
       return;
     }
 
-    await onSubmit?.({ name, email, password });
-    setSuccess(true);
+    try {
+      await auth.register(name, email, password);
+      router.push("/");
+      toast.success("Регистрация успешна!");
+    } catch (err: any) {
+      setError(err.message || "Ошибка регистрации");
+      toast.error("Ошибка регистрации. Попробуйте еще раз.");
+    }
+
+    setLoading(false);
+  };
+
+  const handleChange = async (event: FormEvent) => {
+    const name = (event.target as HTMLInputElement).name;
+    const value = (event.target as HTMLInputElement).value;
+
+    setError(null);
+
+    if (name === "email") {
+      setEmail(value);
+      setErrorEmail(null);
+    }
+
+    if (name === "password") {
+      setPassword(value);
+      setErrorPassword(null);
+    }
+
+    if (name === "name") {
+      setName(value);
+    }
+
+    if (name === "email" && value.trim().length > 0 && !value.includes("@")) {
+      setErrorEmail("Введите корректный email");
+    }
+
+    if (name === "password" && value.trim().length > 0 && value.length < 8) {
+      setErrorPassword("Пароль должен быть не менее 8 символов");
+    }
   };
 
   return (
@@ -47,35 +104,39 @@ export function RegisterForm({ onSubmit }: RegisterFormProps) {
       <div className="space-y-2">
         <label className="text-sm text-slate-400">Имя</label>
         <Input
+          name="name"
           value={name}
-          onChange={(event) => setName(event.target.value)}
+          onChange={(event) => handleChange(event)}
           placeholder="Анна Каренина"
         />
       </div>
       <div className="space-y-2">
         <label className="text-sm text-slate-400">Email</label>
         <Input
+          name="email"
           type="email"
           value={email}
-          onChange={(event) => setEmail(event.target.value)}
+          onChange={(event) => handleChange(event)}
           placeholder="you@shelfnet.com"
         />
+        {errorEmail && <p className="text-sm text-rose-400">{errorEmail}</p>}
       </div>
       <div className="space-y-2">
         <label className="text-sm text-slate-400">Пароль</label>
         <Input
+          name="password"
           type="password"
           value={password}
-          onChange={(event) => setPassword(event.target.value)}
+          onChange={(event) => handleChange(event)}
           placeholder="Минимум 8 символов"
         />
+        {errorPassword && (
+          <p className="text-sm text-rose-400">{errorPassword}</p>
+        )}
       </div>
+
       {error && <p className="text-sm text-rose-400">{error}</p>}
-      {success && (
-        <p className="text-sm text-emerald-400">
-          Добро пожаловать! После интеграции API добавим редирект.
-        </p>
-      )}
+
       <Button type="submit" className="w-full">
         Создать аккаунт
       </Button>

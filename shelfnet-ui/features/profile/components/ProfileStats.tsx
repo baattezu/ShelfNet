@@ -1,5 +1,5 @@
-import { UserProfile } from "@/types";
-import { Card } from "@/components/ui/Card";
+import { UserProfile } from "@/shared/types";
+import { Card } from "@/shared/components/ui/Card";
 
 interface ProfileStatsProps {
   profile: UserProfile;

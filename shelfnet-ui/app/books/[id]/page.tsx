@@ -1,10 +1,10 @@
 import { notFound } from "next/navigation";
-import { SiteLayout } from "@/components/layout/SiteLayout";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { SiteLayout } from "@/shared/components/layout/SiteLayout";
+import { SectionHeading } from "@/shared/components/ui/SectionHeading";
 import { BooksRail } from "@/features/books/components/BooksRail";
 import { BookDetailHero } from "@/features/books/components/BookDetailHero";
 import { BookMetaPanel } from "@/features/books/components/BookMetaPanel";
-import { booksMock } from "@/lib/mockData";
+import { booksMock } from "@/shared/lib/mockData";
 
 interface BookPageProps {
   params: { id: string };

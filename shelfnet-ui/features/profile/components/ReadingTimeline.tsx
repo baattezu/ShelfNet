@@ -1,5 +1,5 @@
-import { Book } from "@/types";
-import { Card } from "@/components/ui/Card";
+import { Book } from "@/shared/types";
+import { Card } from "@/shared/components/ui/Card";
 import Link from "next/link";
 
 interface ReadingTimelineProps {

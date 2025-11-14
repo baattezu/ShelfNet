@@ -1,5 +1,5 @@
-import { Community } from "@/types";
-import { Button } from "@/components/ui/Button";
+import { Community } from "@/shared/types";
+import { Button } from "@/shared/components/ui/Button";
 
 interface CommunityCardProps {
   community: Community;

@@ -1,7 +1,7 @@
-import { UserProfile } from "@/types";
-import { Avatar } from "@/components/ui/Avatar";
-import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
+import { UserProfile } from "@/shared/types";
+import { Avatar } from "@/shared/components/ui/Avatar";
+import { Badge } from "@/shared/components/ui/Badge";
+import { Button } from "@/shared/components/ui/Button";
 
 interface ProfileHeroProps {
   profile: UserProfile;

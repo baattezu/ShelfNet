@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.UUID;
 
 /**
- * User interaction with a book (e.g., read status, rating).
+ * User interaction with a book (e.g., read status, rating, review, favorite).
  */
 @Document(collection = "user_interactions")
 @Data
@@ -28,6 +28,9 @@ public class UserInteraction {
     /** Nature of the interaction. */
     private InteractionType type;
 
-    /** Optional numeric value (e.g. rating score). */
-    private Double value;
+    /** Optional numeric value for ratings (0-5). */
+    private Double rating;
+
+    /** Optional free-form review text. */
+    private String review;
 }

@@ -1,10 +1,10 @@
-import { SiteLayout } from "@/components/layout/SiteLayout";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Button } from "@/components/ui/Button";
-import { BookCard } from "@/components/ui/BookCard";
-import { Card } from "@/components/ui/Card";
-import { Avatar } from "@/components/ui/Avatar";
-import { booksMock, communitiesMock, readersMock } from "@/lib/mockData";
+import { SiteLayout } from "@/shared/components/layout/SiteLayout";
+import { SectionHeading } from "@/shared/components/ui/SectionHeading";
+import { Button } from "@/shared/components/ui/Button";
+import { BookCard } from "@/shared/components/ui/BookCard";
+import { Card } from "@/shared/components/ui/Card";
+import { Avatar } from "@/shared/components/ui/Avatar";
+import { booksMock, communitiesMock, readersMock } from "@/shared/lib/mockData";
 
 export default function HomePage() {
   return (

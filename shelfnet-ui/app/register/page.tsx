@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { SiteLayout } from "@/components/layout/SiteLayout";
-import { Card } from "@/components/ui/Card";
+import { SiteLayout } from "@/shared/components/layout/SiteLayout";
+import { Card } from "@/shared/components/ui/Card";
 import { RegisterForm } from "@/features/auth/components/RegisterForm";
 
 export default function RegisterPage() {

@@ -1,10 +1,10 @@
-import { SiteLayout } from "@/components/layout/SiteLayout";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { SiteLayout } from "@/shared/components/layout/SiteLayout";
+import { SectionHeading } from "@/shared/components/ui/SectionHeading";
 import { ProfileHero } from "@/features/profile/components/ProfileHero";
 import { ProfileStats } from "@/features/profile/components/ProfileStats";
 import { ReadingTimeline } from "@/features/profile/components/ReadingTimeline";
 import { CommunityGrid } from "@/features/community/components/CommunityGrid";
-import { booksMock, communitiesMock, readersMock } from "@/lib/mockData";
+import { booksMock, communitiesMock, readersMock } from "@/shared/lib/mockData";
 
 interface ProfilePageProps {
   params: { id: string };

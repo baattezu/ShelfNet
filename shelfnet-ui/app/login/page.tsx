@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { SiteLayout } from "@/components/layout/SiteLayout";
-import { Card } from "@/components/ui/Card";
+import { SiteLayout } from "@/shared/components/layout/SiteLayout";
+import { Card } from "@/shared/components/ui/Card";
 import { LoginForm } from "@/features/auth/components/LoginForm";
+import AuthForm from "@/demo-src/components/AuthForm";
 
 export default function LoginPage() {
   return (

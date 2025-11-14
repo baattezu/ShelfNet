@@ -32,7 +32,7 @@ public class AuthService {
                 .build();
         user = userRepo.save(user);
         String token = jwtService.generateToken(user);
-        return AuthResponse.builder().jwtToken(token).userId(user.getId()).build();
+        return AuthResponse.builder().jwtToken(token).userProfile(user).build();
     }
 
     /** Authenticate user by email & password and return JWT. */
@@ -43,7 +43,7 @@ public class AuthService {
             throw new IllegalArgumentException("Invalid credentials");
         }
         String token = jwtService.generateToken(user);
-        return AuthResponse.builder().jwtToken(token).userId(user.getId()).build();
+        return AuthResponse.builder().jwtToken(token).userProfile(user).build();
     }
 }
 

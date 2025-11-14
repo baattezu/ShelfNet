@@ -1,43 +1,53 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { Input } from "@/components/ui/Input";
-import { Button } from "@/components/ui/Button";
-import type { AuthCredentials } from "@/types";
-import { useAuth } from "@/src/hooks/useAuth";
-import { useRouter } from "next/dist/client/components/navigation";
+import { Input } from "@/shared/components/ui/Input";
+import { Button } from "@/shared/components/ui/Button";
+import type { AuthCredentials } from "@/shared/types";
+import { useRouter } from "next/navigation";
+import useAuth from "../hooks/useAuth";
+import { toast } from "sonner";
 
 interface LoginFormProps {
   onSubmit?: (credentials: AuthCredentials) => Promise<void> | void;
 }
 
 export function LoginForm({ onSubmit }: LoginFormProps) {
-  const { login } = useAuth();
   const router = useRouter();
-  const [serverError, setServerError] = useState<string | null>(null);
+  const auth = useAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     setError(null);
-    setSuccess(false);
+    setLoading(true);
 
     if (!email || !password) {
       setError("Заполните email и пароль");
+      setLoading(false);
       return;
     }
 
     if (!email.includes("@")) {
       setError("Введите корректный email");
+      setLoading(false);
       return;
     }
 
-    await onSubmit?.({ email, password });
-    setSuccess(true);
+    try {
+      await auth.login(email, password);
+      router.push("/");
+      toast.success("Вход успешен!");
+    } catch (err: any) {
+      setError(err.message || "Ошибка входа");
+      toast.error("Ошибка входа. Попробуйте еще раз.");
+    }
+
+    setLoading(false);
   };
 
   return (
@@ -61,11 +71,6 @@ export function LoginForm({ onSubmit }: LoginFormProps) {
         />
       </div>
       {error && <p className="text-sm text-rose-400">{error}</p>}
-      {success && (
-        <p className="text-sm text-emerald-400">
-          Все ок! Здесь появится редирект после интеграции с API.
-        </p>
-      )}
       <Button type="submit" className="w-full">
         Войти
       </Button>

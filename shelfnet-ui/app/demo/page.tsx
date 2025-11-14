@@ -1,8 +1,8 @@
 import { ShieldCheck, Search, CloudSun } from "lucide-react";
-import { AuthForm } from "@/src/components/AuthForm";
-import { SessionPulse } from "@/src/components/demo/SessionPulse";
-import { RealtimeSearchCard } from "@/src/components/demo/RealtimeSearchCard";
-import { WeatherCard } from "@/src/components/demo/WeatherCard";
+import { AuthForm } from "@/demo-src/components/AuthForm";
+import { SessionPulse } from "@/demo-src/components/demo/SessionPulse";
+import { RealtimeSearchCard } from "@/demo-src/components/demo/RealtimeSearchCard";
+import { WeatherCard } from "@/demo-src/components/demo/WeatherCard";
 
 const heroHighlights = [
   {

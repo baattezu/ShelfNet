@@ -7,6 +7,7 @@ import nochill.shelfnet.data.model.Book;
 import nochill.shelfnet.data.repo.BookRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
@@ -49,5 +50,20 @@ public class BookService {
     public Book addBook(Book book) {
         return bookRepository.save(book);
     }
-}
 
+    /** Compute popular books list sorted by composite popularity score. */
+    public List<Book> getPopularBooks(int limit) {
+        return bookRepository.findAll().stream()
+                .sorted(Comparator.comparingDouble(this::popularityScore).reversed())
+                .limit(limit)
+                .collect(Collectors.toList());
+    }
+
+    private double popularityScore(Book b) {
+        double ratingComponent = b.getAvgRating() != null ? b.getAvgRating() : 0.0;
+        double likesComponent = b.getLikesCount() != null ? b.getLikesCount() : 0.0;
+        double readComponent = b.getReadCount() != null ? b.getReadCount() : 0.0;
+        double googleBoost = b.getGoogleTrendingBoost() != null ? b.getGoogleTrendingBoost() * 10.0 : 0.0;
+        return ratingComponent * 2 + likesComponent + readComponent + googleBoost; // weights
+    }
+}

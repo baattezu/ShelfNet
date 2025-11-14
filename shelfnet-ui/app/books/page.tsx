@@ -1,12 +1,12 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { SiteLayout } from "@/components/layout/SiteLayout";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { SiteLayout } from "@/shared/components/layout/SiteLayout";
+import { SectionHeading } from "@/shared/components/ui/SectionHeading";
 import { BookFilters } from "@/features/books/components/BookFilters";
 import { BooksRail } from "@/features/books/components/BooksRail";
 import { BooksGrid } from "@/features/books/components/BooksGrid";
-import { booksMock } from "@/lib/mockData";
+import { booksMock } from "@/shared/lib/mockData";
 
 const categories = ["Все", "Фантастика", "Non-fiction", "Фэнтези", "Классика"];
 
