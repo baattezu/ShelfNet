@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html class="dark" lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>ShelfNet - Каталог книг</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+    </style>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#3b82f6",
+              "background-light": "#f5f7f8",
+              "background-dark": "#0f172a",
+              surface: "#1e293b",
+              "text-primary": "#f8fafc",
+              "text-secondary": "#94a3b8",
+            },
+            fontFamily: {
+              display: ["Inter", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.75rem",
+              lg: "1rem",
+              xl: "1.5rem",
+              "2xl": "1rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-background-dark font-display text-text-primary">
+    <div class="relative flex min-h-screen w-full flex-col">
+      <div class="layout-container flex h-full grow flex-col">
+        <div class="flex flex-1 justify-center py-5">
+          <div
+            class="layout-content-container flex w-full max-w-7xl flex-col px-4 sm:px-6 lg:px-8"
+          >
+            <header
+              class="flex items-center justify-between whitespace-nowrap border-b border-solid border-surface px-4 py-3"
+            >
+              <div class="flex items-center gap-8">
+                <div class="flex items-center gap-3 text-white">
+                  <div class="size-6 text-primary">
+                    <svg
+                      fill="none"
+                      viewBox="0 0 48 48"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z"
+                        fill="currentColor"
+                      ></path>
+                    </svg>
+                  </div>
+                  <h2
+                    class="text-white text-xl font-bold leading-tight tracking-[-0.015em]"
+                  >
+                    ShelfNet
+                  </h2>
+                </div>
+                <nav class="hidden items-center gap-8 lg:flex">
+                  <a
+                    class="text-text-secondary hover:text-text-primary text-sm font-medium leading-normal transition-colors"
+                    href="#"
+                    >Главная</a
+                  >
+                  <a
+                    class="text-text-primary text-sm font-bold leading-normal transition-colors"
+                    href="#"
+                    >Каталог</a
+                  >
+                  <a
+                    class="text-text-secondary hover:text-text-primary text-sm font-medium leading-normal transition-colors"
+                    href="#"
+                    >Сообщества</a
+                  >
+                  <a
+                    class="text-text-secondary hover:text-text-primary text-sm font-medium leading-normal transition-colors"
+                    href="#"
+                    >Профиль</a
+                  >
+                </nav>
+              </div>
+              <div class="flex items-center justify-end gap-4">
+                <label class="relative hidden sm:block">
+                  <span
+                    class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary"
+                    >search</span
+                  >
+                  <input
+                    class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg border-none bg-surface h-10 placeholder:text-text-secondary pl-10 pr-4 text-sm font-normal leading-normal text-text-primary focus:outline-none focus:ring-2 focus:ring-primary"
+                    placeholder="Поиск"
+                    value=""
+                  />
+                </label>
+                <div class="flex gap-2">
+                  <button
+                    class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-surface text-text-primary hover:bg-slate-700 text-sm font-bold leading-normal tracking-[0.015em] transition-colors"
+                  >
+                    <span class="truncate">Войти</span>
+                  </button>
+                  <button
+                    class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white hover:bg-blue-600 text-sm font-bold leading-normal tracking-[0.015em] transition-colors"
+                  >
+                    <span class="truncate">Регистрация</span>
+                  </button>
+                </div>
+                <button class="lg:hidden p-2 rounded-lg bg-surface">
+                  <span class="material-symbols-outlined text-text-primary"
+                    >menu</span
+                  >
+                </button>
+              </div>
+            </header>
+            <main class="flex flex-col gap-12 md:gap-16 py-12 md:py-16">
+              <section class="flex flex-col gap-8">
+                <h1
+                  class="text-text-primary text-4xl font-bold leading-tight tracking-[-0.033em] md:text-5xl"
+                >
+                  Каталог книг
+                </h1>
+                <div class="flex flex-col gap-4">
+                  <div class="relative">
+                    <span
+                      class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary"
+                      >search</span
+                    >
+                    <input
+                      class="w-full rounded-lg border-none bg-surface py-3 pl-12 pr-4 text-text-primary placeholder:text-text-secondary focus:outline-none focus:ring-2 focus:ring-primary"
+                      placeholder="Поиск по названию или автору..."
+                      type="text"
+                    />
+                  </div>
+                  <div class="flex flex-wrap items-center gap-3">
+                    <button
+                      class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-surface px-4 text-text-secondary hover:bg-slate-700 hover:text-text-primary transition-colors text-sm font-medium"
+                    >
+                      <span>Жанр</span>
+                      <span class="material-symbols-outlined text-base"
+                        >expand_more</span
+                      >
+                    </button>
+                    <button
+                      class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-surface px-4 text-text-secondary hover:bg-slate-700 hover:text-text-primary transition-colors text-sm font-medium"
+                    >
+                      <span>Автор</span>
+                      <span class="material-symbols-outlined text-base"
+                        >expand_more</span
+                      >
+                    </button>
+                    <button
+                      class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-surface px-4 text-text-secondary hover:bg-slate-700 hover:text-text-primary transition-colors text-sm font-medium"
+                    >
+                      <span>Теги</span>
+                      <span class="material-symbols-outlined text-base"
+                        >expand_more</span
+                      >
+                    </button>
+                    <button
+                      class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-surface px-4 text-text-secondary hover:bg-slate-700 hover:text-text-primary transition-colors text-sm font-medium"
+                    >
+                      <span>Рейтинг</span>
+                      <span class="material-symbols-outlined text-base"
+                        >expand_more</span
+                      >
+                    </button>
+                    <button
+                      class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-surface px-4 text-text-secondary hover:bg-slate-700 hover:text-text-primary transition-colors text-sm font-medium"
+                    >
+                      <span>Статус чтения</span>
+                      <span class="material-symbols-outlined text-base"
+                        >expand_more</span
+                      >
+                    </button>
+                  </div>
+                </div>
+              </section>
+              <section class="flex flex-col gap-4">
+                <div class="flex items-center justify-between">
+                  <h2 class="text-white text-2xl font-bold">
+                    Рекомендации для вас
+                  </h2>
+                  <a
+                    class="text-sm font-medium text-primary hover:underline"
+                    href="#"
+                    >Показать все</a
+                  >
+                </div>
+                <div class="relative">
+                  <div
+                    class="flex gap-6 overflow-x-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden py-2 -mx-4 px-4"
+                  >
+                    <div
+                      class="group flex w-48 shrink-0 flex-col gap-3 rounded-lg"
+                    >
+                      <div class="relative w-full overflow-hidden rounded-lg">
+                        <div
+                          class="w-full rounded-lg bg-cover bg-center bg-no-repeat aspect-[3/4]"
+                          style="
+                            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAXTmZOXKkNUVpRszH3tYKiL9P25M_9uQrMchregLaqgq3c5TLVSAnICWz5qLV7-Z7uBRCYud16yMRoKwdwg5O2NjaHK9ZbaP0g1ECzunnSlg3dUj3sIKUSJoEKr5ct29EUwRlrDwVW3AroUTGArxmlsfu9M7H2_UFWpANcu1Gun691YFP1V4yMU1iyWdy43_fInIM3tGWC81Ho7aqEkpkzEnlOGbfZQ9J4rTuO8jfiZAeA_f2eMBjd2Z2BtTCvSJG6XwNSffz5_VXs');
+                          "
+                        ></div>
+                        <div
+                          class="absolute inset-0 flex flex-col items-center justify-end bg-gradient-to-t from-black/80 to-transparent p-4 opacity-0 transition-opacity group-hover:opacity-100"
+                        >
+                          <div class="flex w-full flex-col gap-2">
+                            <button
+                              class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-3 bg-primary text-white hover:bg-blue-600 text-sm font-medium transition-colors"
+                            >
+                              Хочу прочитать
+                            </button>
+                            <button
+                              class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-3 bg-surface/80 text-text-primary hover:bg-surface text-sm font-medium transition-colors"
+                            >
+                              Прочитал
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <p
+                          class="truncate text-base font-medium leading-normal text-text-primary"
+                        >
+                          Circe
+                        </p>
+                        <p
+                          class="truncate text-sm font-normal leading-normal text-text-secondary"
+                        >
+                          Madeline Miller
+                        </p>
+                        <div
+                          class="flex items-center gap-1 text-sm text-yellow-400"
+                        >
+                          <span
+                            class="material-symbols-outlined !text-base fill-1 text-yellow-400"
+                            >star</span
+                          >
+                          <span>4.6</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="group flex w-48 shrink-0 flex-col gap-3 rounded-lg"
+                    >
+                      <div class="relative w-full overflow-hidden rounded-lg">
+                        <div
+                          class="w-full rounded-lg bg-cover bg-center bg-no-repeat aspect-[3/4]"
+                          style="
+                            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCRW8YLUuAee-BLQKiDnx2NxtfPfejsYrBO29D4-lt5k9pNcwsg7dBRMxprrnK_fitJJZWLisIDJRZhTPUVioLxjGMwEduZ3Q1CjxTtr2ThczXvrn9gYB6b5JgbElBjE9zGyXe6Qo54-bSbfkS_fSGfyAo971QStRVzFjuYnKvRgG80Xa68xoUJD-psOCt9hNNojDTiadzcHtq9P31iLWBkkVOOrK53zAWC91Oa0Rgz4ou8JNTViCSFkrOblR8yu3tKAAg4EW7CXF67');
+                          "
+                        ></div>
+                        <div
+                          class="absolute inset-0 flex flex-col items-center justify-end bg-gradient-to-t from-black/80 to-transparent p-4 opacity-0 transition-opacity group-hover:opacity-100"
+                        >
+                          <div class="flex w-full flex-col gap-2">
+                            <button
+                              class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-3 bg-primary text-white hover:bg-blue-600 text-sm font-medium transition-colors"
+                            >
+                              Хочу прочитать
+                            </button>
+                            <button
+                              class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-3 bg-surface/80 text-text-primary hover:bg-surface text-sm font-medium transition-colors"
+                            >
+                              Прочитал
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <p
+                          class="truncate text-base font-medium leading-normal text-text-primary"
+                        >
+                          Project Hail Mary
+                        </p>
+                        <p
+                          class="truncate text-sm font-normal leading-normal text-text-secondary"
+                        >
+                          Andy Weir
+                        </p>
+                        <div
+                          class="flex items-center gap-1 text-sm text-yellow-400"
+                        >
+                          <span
+                            class="material-symbols-outlined !text-base fill-1 text-yellow-400"
+                            >star</span
+                          >
+                          <span>4.8</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="group flex w-48 shrink-0 flex-col gap-3 rounded-lg"
+                    >
+                      <div class="relative w-full overflow-hidden rounded-lg">
+                        <div
+                          class="w-full rounded-lg bg-cover bg-center bg-no-repeat aspect-[3/4]"
+                          style="
+                            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB86VdetuI4BsKAGBHtbWMVnk3bLloPyv9bt1dSxIMHCn3ZgNh6al6thALFjFk-Rx3z0NUo86j2R7F50QsIm3ZjedXZPWAQF5WndUs0FksOkEVaXWo4_fxbcpFe-fcp_TeJesWWrP3-_zlX3AmjODegLX4V7H-h8dyPmk8BO_MQSqYDZNoJtaRqWQiFotQiy7oj3GqbDKcJAXzcLP_UyjNDHZWZd9kE_y3FTKe9sR067eTa2SZ1fRy3DgzxuswxX2JJBdZcbmW7UNZS');
+                          "
+                        ></div>
+                        <div
+                          class="absolute inset-0 flex flex-col items-center justify-end bg-gradient-to-t from-black/80 to-transparent p-4 opacity-0 transition-opacity group-hover:opacity-100"
+                        >
+                          <div class="flex w-full flex-col gap-2">
+                            <button
+                              class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-3 bg-primary text-white hover:bg-blue-600 text-sm font-medium transition-colors"
+                            >
+                              Хочу прочитать
+                            </button>
+                            <button
+                              class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-3 bg-surface/80 text-text-primary hover:bg-surface text-sm font-medium transition-colors"
+                            >
+                              Прочитал
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <p
+                          class="truncate text-base font-medium leading-normal text-text-primary"
+                        >
+                          Atomic Habits
+                        </p>
+                        <p
+                          class="truncate text-sm font-normal leading-normal text-text-secondary"
+                        >
+                          James Clear
+                        </p>
+                        <div
+                          class="flex items-center gap-1 text-sm text-yellow-400"
+                        >
+                          <span
+                            class="material-symbols-outlined !text-base fill-1 text-yellow-400"
+                            >star</span
+                          >
+                          <span>4.9</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="group flex w-48 shrink-0 flex-col gap-3 rounded-lg"
+                    >
+                      <div class="relative w-full overflow-hidden rounded-lg">
+                        <div
+                          class="w-full rounded-lg bg-cover bg-center bg-no-repeat aspect-[3/4]"
+                          style="
+                            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuANh5XcCwHZhWragxpaDRmW5QQ1PSAXCVYXUymD-mJ9_WPm0pxvKcvX70vuAf2blMspJUcR3hEN4u7Ttj8M7X06ELNEHcrFU-D2yuSpLemZLRT-Tx36tPFjFj03RiZ0cFVjqfmNIrpHu_iEdkygSsreEWOBiC9fWr94hgsxvwnh8CBthYeB1hvKWe543clnof2ouh8x5ODsBIp3ILjBLuX1D9hs9pAb73s4L7BDvsFwKmzstEPGtYBwT9ziqIzeZ70nTuu8Suqyqftf');
+                          "
+                        ></div>
+                        <div
+                          class="absolute inset-0 flex flex-col items-center justify-end bg-gradient-to-t from-black/80 to-transparent p-4 opacity-0 transition-opacity group-hover:opacity-100"
+                        >
+                          <div class="flex w-full flex-col gap-2">
+                            <button
+                              class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-3 bg-primary text-white hover:bg-blue-600 text-sm font-medium transition-colors"
+                            >
+                              Хочу прочитать
+                            </button>
+                            <button
+                              class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-3 bg-surface/80 text-text-primary hover:bg-surface text-sm font-medium transition-colors"
+                            >
+                              Прочитал
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <p
+                          class="truncate text-base font-medium leading-normal text-text-primary"
+                        >
+                          Dune
+                        </p>
+                        <p
+                          class="truncate text-sm font-normal leading-normal text-text-secondary"
+                        >
+                          Frank Herbert
+                        </p>
+                        <div
+                          class="flex items-center gap-1 text-sm text-yellow-400"
+                        >
+                          <span
+                            class="material-symbols-outlined !text-base fill-1 text-yellow-400"
+                            >star</span
+                          >
+                          <span>4.5</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="group flex w-48 shrink-0 flex-col gap-3 rounded-lg"
+                    >
+                      <div class="relative w-full overflow-hidden rounded-lg">
+                        <div
+                          class="w-full rounded-lg bg-cover bg-center bg-no-repeat aspect-[3/4]"
+                          style="
+                            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBxa8dJH8KnIq7yq2Mk5nC5y_ukXkKsAeZKG-kKGRyTp4gS1OhsGf1XnEYilxMphc0uMTpQKTvYSspqpesCG5LBqcscbB28bCtd3qkd3MwuGXrKKhFGi6tRX9tRFBrW4ZyflKHwlsJK-TJNnV7R169fHum_gQiRWvXBtg-MH9wMaYOV96N6hvo2LoBborbvKpVEh0LBn1YpypXiVUhLrL1jiDm8rqlj36F2cZ-IC3SIHnMqSKwIDWdu0YCaoYGIFIqKu3sa1cGeovV5');
+                          "
+                        ></div>
+                        <div
+                          class="absolute inset-0 flex flex-col items-center justify-end bg-gradient-to-t from-black/80 to-transparent p-4 opacity-0 transition-opacity group-hover:opacity-100"
+                        >
+                          <div class="flex w-full flex-col gap-2">
+                            <button
+                              class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-3 bg-primary text-white hover:bg-blue-600 text-sm font-medium transition-colors"
+                            >
+                              Хочу прочитать
+                            </button>
+                            <button
+                              class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-3 bg-surface/80 text-text-primary hover:bg-surface text-sm font-medium transition-colors"
+                            >
+                              Прочитал
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <p
+                          class="truncate text-base font-medium leading-normal text-text-primary"
+                        >
+                          The Midnight Library
+                        </p>
+                        <p
+                          class="truncate text-sm font-normal leading-normal text-text-secondary"
+                        >
+                          Matt Haig
+                        </p>
+                        <div
+                          class="flex items-center gap-1 text-sm text-yellow-400"
+                        >
+                          <span
+                            class="material-symbols-outlined !text-base fill-1 text-yellow-400"
+                            >star</span
+                          >
+                          <span>4.2</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section class="flex flex-col gap-4">
+                <div
+                  class="flex flex-wrap items-center justify-between gap-y-2"
+                >
+                  <h2 class="text-white text-2xl font-bold">
+                    Популярные книги
+                  </h2>
+                  <div
+                    class="flex items-center gap-1 rounded-lg bg-surface p-1"
+                  >
+                    <button
+                      class="rounded-md px-3 py-1 text-sm font-medium text-text-primary transition-colors bg-primary"
+                    >
+                      Неделя
+                    </button>
+                    <button
+                      class="rounded-md px-3 py-1 text-sm font-medium text-text-secondary transition-colors hover:text-text-primary"
+                    >
+                      Месяц
+                    </button>
+                    <button
+                      class="rounded-md px-3 py-1 text-sm font-medium text-text-secondary transition-colors hover:text-text-primary"
+                    >
+                      Год
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+                >
+                  <div
+                    class="group flex flex-col gap-3 rounded-2xl bg-surface p-4 transition-all hover:bg-slate-700 hover:scale-[1.02]"
+                  >
+                    <div class="flex items-start gap-4">
+                      <div class="w-20 shrink-0">
+                        <div
+                          class="w-full rounded-lg bg-cover bg-center bg-no-repeat aspect-[3/4]"
+                          style="
+                            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCRW8YLUuAee-BLQKiDnx2NxtfPfejsYrBO29D4-lt5k9pNcwsg7dBRMxprrnK_fitJJZWLisIDJRZhTPUVioLxjGMwEduZ3Q1CjxTtr2ThczXvrn9gYB6b5JgbElBjE9zGyXe6Qo54-bSbfkS_fSGfyAo971QStRVzFjuYnKvRgG80Xa68xoUJD-psOCt9hNNojDTiadzcHtq9P31iLWBkkVOOrK53zAWC91Oa0Rgz4ou8JNTViCSFkrOblR8yu3tKAAg4EW7CXF67');
+                          "
+                        ></div>
+                      </div>
+                      <div class="flex flex-col">
+                        <p class="font-semibold text-text-primary">
+                          Project Hail Mary
+                        </p>
+                        <p class="text-sm text-text-secondary">Andy Weir</p>
+                        <div
+                          class="mt-1 flex items-center gap-1 text-sm text-yellow-400"
+                        >
+                          <span
+                            class="material-symbols-outlined !text-base fill-1 text-yellow-400"
+                            >star</span
+                          >
+                          <span>4.8</span>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="text-sm text-text-secondary">
+                      Увлекательная научная фантастика, которая захватывает с
+                      первой страницы.
+                    </p>
+                    <div class="mt-auto flex gap-2">
+                      <button
+                        class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-3 bg-primary text-white hover:bg-blue-600 text-sm font-medium transition-colors"
+                      >
+                        Хочу прочитать
+                      </button>
+                      <button
+                        class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-3 bg-slate-600 text-text-primary hover:bg-slate-500 text-sm font-medium transition-colors"
+                      >
+                        Прочитал
+                      </button>
+                    </div>
+                  </div>
+                  <div
+                    class="group flex flex-col gap-3 rounded-2xl bg-surface p-4 transition-all hover:bg-slate-700 hover:scale-[1.02]"
+                  >
+                    <div class="flex items-start gap-4">
+                      <div class="w-20 shrink-0">
+                        <div
+                          class="w-full rounded-lg bg-cover bg-center bg-no-repeat aspect-[3/4]"
+                          style="
+                            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuANh5XcCwHZhWragxpaDRmW5QQ1PSAXCVYXUymD-mJ9_WPm0pxvKcvX70vuAf2blMspJUcR3hEN4u7Ttj8M7X06ELNEHcrFU-D2yuSpLemZLRT-Tx36tPFjFj03RiZ0cFVjqfmNIrpHu_iEdkygSsreEWOBiC9fWr94hgsxvwnh8CBthYeB1hvKWe543clnof2ouh8x5ODsBIp3ILjBLuX1D9hs9pAb73s4L7BDvsFwKmzstEPGtYBwT9ziqIzeZ70nTuu8Suqyqftf');
+                          "
+                        ></div>
+                      </div>
+                      <div class="flex flex-col">
+                        <p class="font-semibold text-text-primary">Dune</p>
+                        <p class="text-sm text-text-secondary">Frank Herbert</p>
+                        <div
+                          class="mt-1 flex items-center gap-1 text-sm text-yellow-400"
+                        >
+                          <span
+                            class="material-symbols-outlined !text-base fill-1 text-yellow-400"
+                            >star</span
+                          >
+                          <span>4.5</span>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="text-sm text-text-secondary">
+                      Эпическая сага о политике, религии и выживании в пустынном
+                      мире.
+                    </p>
+                    <div class="mt-auto flex gap-2">
+                      <button
+                        class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-3 bg-primary text-white hover:bg-blue-600 text-sm font-medium transition-colors"
+                      >
+                        Хочу прочитать
+                      </button>
+                    </div>
+                  </div>
+                  <div
+                    class="group flex flex-col gap-3 rounded-2xl bg-surface p-4 transition-all hover:bg-slate-700 hover:scale-[1.02]"
+                  >
+                    <div class="flex items-start gap-4">
+                      <div class="w-20 shrink-0">
+                        <div
+                          class="w-full rounded-lg bg-cover bg-center bg-no-repeat aspect-[3/4]"
+                          style="
+                            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB86VdetuI4BsKAGBHtbWMVnk3bLloPyv9bt1dSxIMHCn3ZgNh6al6thALFjFk-Rx3z0NUo86j2R7F50QsIm3ZjedXZPWAQF5WndUs0FksOkEVaXWo4_fxbcpFe-fcp_TeJesWWrP3-_zlX3AmjODegLX4V7H-h8dyPmk8BO_MQSqYDZNoJtaRqWQiFotQiy7oj3GqbDKcJAXzcLP_UyjNDHZWZd9kE_y3FTKe9sR067eTa2SZ1fRy3DgzxuswxX2JJBdZcbmW7UNZS');
+                          "
+                        ></div>
+                      </div>
+                      <div class="flex flex-col">
+                        <p class="font-semibold text-text-primary">
+                          Atomic Habits
+                        </p>
+                        <p class="text-sm text-text-secondary">James Clear</p>
+                        <div
+                          class="mt-1 flex items-center gap-1 text-sm text-yellow-400"
+                        >
+                          <span
+                            class="material-symbols-outlined !text-base fill-1 text-yellow-400"
+                            >star</span
+                          >
+                          <span>4.9</span>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="text-sm text-text-secondary">
+                      Практическое руководство по созданию хороших привычек и
+                      избавлению от плохих.
+                    </p>
+                    <div class="mt-auto flex gap-2">
+                      <button
+                        class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-3 bg-primary text-white hover:bg-blue-600 text-sm font-medium transition-colors"
+                      >
+                        Хочу прочитать
+                      </button>
+                    </div>
+                  </div>
+                  <div
+                    class="group flex flex-col gap-3 rounded-2xl bg-surface p-4 transition-all hover:bg-slate-700 hover:scale-[1.02]"
+                  >
+                    <div class="flex items-start gap-4">
+                      <div class="w-20 shrink-0">
+                        <div
+                          class="w-full rounded-lg bg-cover bg-center bg-no-repeat aspect-[3/4]"
+                          style="
+                            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBxa8dJH8KnIq7yq2Mk5nC5y_ukXkKsAeZKG-kKGRyTp4gS1OhsGf1XnEYilxMphc0uMTpQKTvYSspqpesCG5LBqcscbB28bCtd3qkd3MwuGXrKKhFGi6tRX9tRFBrW4ZyflKHwlsJK-TJNnV7R169fHum_gQiRWvXBtg-MH9wMaYOV96N6hvo2LoBborbvKpVEh0LBn1YpypXiVUhLrL1jiDm8rqlj36F2cZ-IC3SIHnMqSKwIDWdu0YCaoYGIFIqKu3sa1cGeovV5');
+                          "
+                        ></div>
+                      </div>
+                      <div class="flex flex-col">
+                        <p class="font-semibold text-text-primary">
+                          The Midnight Library
+                        </p>
+                        <p class="text-sm text-text-secondary">Matt Haig</p>
+                        <div
+                          class="mt-1 flex items-center gap-1 text-sm text-yellow-400"
+                        >
+                          <span
+                            class="material-symbols-outlined !text-base fill-1 text-yellow-400"
+                            >star</span
+                          >
+                          <span>4.2</span>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="text-sm text-text-secondary">
+                      Трогательный роман о выборе и о том, что делает жизнь
+                      стоящей.
+                    </p>
+                    <div class="mt-auto flex gap-2">
+                      <button
+                        class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-3 bg-slate-600 text-text-primary hover:bg-slate-500 text-sm font-medium transition-colors"
+                      >
+                        Прочитал
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section class="flex flex-col gap-4">
+                <div class="flex items-center justify-between">
+                  <h2 class="text-white text-2xl font-bold">
+                    Рекомендует ваше сообщество
+                  </h2>
+                  <a
+                    class="text-sm font-medium text-primary hover:underline"
+                    href="#"
+                    >Показать все</a
+                  >
+                </div>
+                <div class="relative">
+                  <div
+                    class="flex gap-6 overflow-x-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden py-2 -mx-4 px-4"
+                  >
+                    <div
+                      class="group flex w-60 shrink-0 flex-col gap-3 rounded-2xl bg-surface p-4 transition-colors hover:bg-slate-700"
+                    >
+                      <div class="flex items-start gap-4">
+                        <div class="w-16 shrink-0">
+                          <div
+                            class="w-full rounded-lg bg-cover bg-center bg-no-repeat aspect-[3/4]"
+                            style="
+                              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAihk0lu8UMuTarCheKwuyT5_G8--rPIRtNGYOQKPggpKzcFpF-2ut14uslZezYukl7nu7EAb-4WVDICYgpRFyIa-SzeAepdT7ufrfFItKVTWfSZvk-LBfJNqR4FHeKOA7ABxJXkk1u5gPpo4T1kSBMoxQO6jnELY2tthXWPsSoHhHAvWQVjt0JtKuSKqSgoVRYEhBMGw7ksbdgMoQixqsbQRnQ3DIyI7L-fxPPLu2mLXFs9eqkwKyvjONzj6-_zJoyE_NAMYQC_e6Q');
+                            "
+                          ></div>
+                        </div>
+                        <div class="flex flex-col">
+                          <p class="font-semibold text-text-primary">
+                            Klara and the Sun
+                          </p>
+                          <p class="text-sm text-text-secondary">
+                            Kazuo Ishiguro
+                          </p>
+                        </div>
+                      </div>
+                      <div
+                        class="flex items-center gap-2 rounded-lg bg-slate-900/50 p-2"
+                      >
+                        <div
+                          class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8"
+                          style="
+                            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCcu1JjmVEMR8rFqq5gCUCLXp1-z42lIA6xOlHRpq-RIYG_l6pKj2B-Z0l8lFrhnhaQIvjMIlthroarzdvTK3dkJrQqTJ5bxm6J2-MBFj0Vn9lTvEHk5t5aA2SJTJCO_kDKMR-hN3-Uu_tfyUxQ9OCAERaA7GGagC7YA7MBgObR2N2ejIkhra9sNt3vms16xTIuyQ8rSh5yJH7XPZTihCRSpZf41kgB__qn-Y97Yj-fJBui7bDvHUlsfD3Q-I15QzjFjoBB6sOTYK-9');
+                          "
+                        ></div>
+                        <p class="text-sm text-text-secondary">
+                          <span class="font-semibold text-text-primary"
+                            >Sci-Fi Explorers</span
+                          >
+                          обсуждают эту книгу
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      class="group flex w-60 shrink-0 flex-col gap-3 rounded-2xl bg-surface p-4 transition-colors hover:bg-slate-700"
+                    >
+                      <div class="flex items-start gap-4">
+                        <div class="w-16 shrink-0">
+                          <div
+                            class="w-full rounded-lg bg-cover bg-center bg-no-repeat aspect-[3/4]"
+                            style="
+                              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuApafhuXOfBVZwGonMg_nQGlItqB-wVeIW9_9EPeHovk6n89qD5milIpjUH6SJHxINtEsbpRNZQPHIw5rBxrjHO6lI2Q3_6zboJsJrLnOoR0mAVHfrVFnNmy7QicIK3eqe4U7xQKaY0rOtPldUHjfKDz3BgTwsstEhCV4Y4n6vCJv0Z_IiRJYIlk0LutbWXDeqMJ-Zpx0nLLpv8fYpvcExpTCzt88yYBNdJDEPo9rjfRaJcaEI7OQ_ZDWHSHfIV6emgY-2P3BWDymVS');
+                            "
+                          ></div>
+                        </div>
+                        <div class="flex flex-col">
+                          <p class="font-semibold text-text-primary">
+                            Pride and Prejudice
+                          </p>
+                          <p class="text-sm text-text-secondary">Jane Austen</p>
+                        </div>
+                      </div>
+                      <div
+                        class="flex items-center gap-2 rounded-lg bg-slate-900/50 p-2"
+                      >
+                        <div
+                          class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8"
+                          style="
+                            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD_kuI3lyvvteGI8RJpWIT5ByukpNGNPdNd1lVQ_zhBVxC3SOrMQXdfE5lXqIWNICLqbuUbczS85WMzhmyqgutWUbwIFl3RrPE-5T_p48_SLWbXSdLmzRDlHf2HUKNrnCv11g3OnVaaqI1V2I1uY4E4F0nfE5wf61610JpxS-5cTo6KT1j610LESvgK7XP7jR8SZoEBVAh_WKaXw290oFKsUbXIBVC6tWl8qaf4g6Xi0DgT0YPgMh7UuD5cMlH7nCArPjPwMxkQkCbg');
+                          "
+                        ></div>
+                        <p class="text-sm text-text-secondary">
+                          Популярно в
+                          <span class="font-semibold text-text-primary"
+                            >Classic Literature Club</span
+                          >
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      class="group flex w-60 shrink-0 flex-col gap-3 rounded-2xl bg-surface p-4 transition-colors hover:bg-slate-700"
+                    >
+                      <div class="flex items-start gap-4">
+                        <div class="w-16 shrink-0">
+                          <div
+                            class="w-full rounded-lg bg-cover bg-center bg-no-repeat aspect-[3/4]"
+                            style="
+                              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAXTmZOXKkNUVpRszH3tYKiL9P25M_9uQrMchregLaqgq3c5TLVSAnICWz5qLV7-Z7uBRCYud16yMRoKwdwg5O2NjaHK9ZbaP0g1ECzunnSlg3dUj3sIKUSJoEKr5ct29EUwRlrDwVW3AroUTGArxmlsfu9M7H2_UFWpANcu1Gun691YFP1V4yMU1iyWdy43_fInIM3tGWC81Ho7aqEkpkzEnlOGbfZQ9J4rTuO8jfiZAeA_f2eMBjd2Z2BtTCvSJG6XwNSffz5_VXs');
+                            "
+                          ></div>
+                        </div>
+                        <div class="flex flex-col">
+                          <p class="font-semibold text-text-primary">Circe</p>
+                          <p class="text-sm text-text-secondary">
+                            Madeline Miller
+                          </p>
+                        </div>
+                      </div>
+                      <div
+                        class="flex items-center gap-2 rounded-lg bg-slate-900/50 p-2"
+                      >
+                        <div
+                          class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8"
+                          style="
+                            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAWtdOOhfhcENH-FAYaTBJEILeL16T7qou1k7Pb0A6aIgHBfTmqev01PbM0SJTXUbTcJMuau5OKUlXt-XXsP4_KbuvTtsHmYjVI3Q-3Y3Q6QadZhcSh0ykg2lvPZw4mPn6Ln9JxKMMosJNb0qHXOyW1rx3dlDDOBzBFM3D8lCY1CxzOkn9VIbdzQMcCDQNyRxiHfEHtithmVgpNxOtZk-s6xerXvNN3GkHdK2i3V9S_rq55JlOu1S0za_I9T60aByU4zUfesUk-Fw6_');
+                          "
+                        ></div>
+                        <p class="text-sm text-text-secondary">
+                          Тренд в
+                          <span class="font-semibold text-text-primary"
+                            >Modern Fantasy Fans</span
+                          >
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      class="group flex w-60 shrink-0 flex-col gap-3 rounded-2xl bg-surface p-4 transition-colors hover:bg-slate-700"
+                    >
+                      <div class="flex items-start gap-4">
+                        <div class="w-16 shrink-0">
+                          <div
+                            class="w-full rounded-lg bg-cover bg-center bg-no-repeat aspect-[3/4]"
+                            style="
+                              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDAevPagYNl7maClcEs3iGe0rUBdjTnfp60hmD43akNRsaKgDDyQQHuc5Jmxkd1ppjFUjfLmsu40mr5YVRXM0iG17GIjk83yROyQXGMocs5CIgb7q83H9zB-jy4sZ7c-sqHVjV_EVRQZPlrfTZo4kvySXBkNTpbwbxBN23YDBouujMnBQc5T-7gIJCIOHHos-z4FpS9KLsb5t-CvwpUb2fujg85w5C1GqXEhyj5AmVed0gynlvCh7IYWaHNIgNuUhFOtc0bb77rqujN');
+                            "
+                          ></div>
+                        </div>
+                        <div class="flex flex-col">
+                          <p class="font-semibold text-text-primary">
+                            The Three-Body Problem
+                          </p>
+                          <p class="text-sm text-text-secondary">Cixin Liu</p>
+                        </div>
+                      </div>
+                      <div
+                        class="flex items-center gap-2 rounded-lg bg-slate-900/50 p-2"
+                      >
+                        <div
+                          class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8"
+                          style="
+                            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCcu1JjmVEMR8rFqq5gCUCLXp1-z42lIA6xOlHRpq-RIYG_l6pKj2B-Z0l8lFrhnhaQIvjMIlthroarzdvTK3dkJrQqTJ5bxm6J2-MBFj0Vn9lTvEHk5t5aA2SJTJCO_kDKMR-hN3-Uu_tfyUxQ9OCAERaA7GGagC7YA7MBgObR2N2ejIkhra9sNt3vms16xTIuyQ8rSh5yJH7XPZTihCRSpZf41kgB__qn-Y97Yj-fJBui7bDvHUlsfD3Q-I15QzjFjoBB6sOTYK-9');
+                          "
+                        ></div>
+                        <p class="text-sm text-text-secondary">
+                          Обсуждается в
+                          <span class="font-semibold text-text-primary"
+                            >Sci-Fi Explorers</span
+                          >
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
+                <section class="flex flex-col gap-4">
+                  <div class="flex items-center justify-between">
+                    <h2 class="text-white text-2xl font-bold">
+                      Выбор редакции
+                    </h2>
+                    <a
+                      class="text-sm font-medium text-primary hover:underline"
+                      href="#"
+                      >Показать все</a
+                    >
+                  </div>
+                  <div class="flex flex-col gap-4">
+                    <div
+                      class="group flex items-start gap-4 rounded-2xl bg-surface p-4 transition-colors hover:bg-slate-700"
+                    >
+                      <div class="w-20 shrink-0">
+                        <div
+                          class="w-full rounded-lg bg-cover bg-center bg-no-repeat aspect-[3/4]"
+                          style="
+                            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuApafhuXOfBVZwGonMg_nQGlItqB-wVeIW9_9EPeHovk6n89qD5milIpjUH6SJHxINtEsbpRNZQPHIw5rBxrjHO6lI2Q3_6zboJsJrLnOoR0mAVHfrVFnNmy7QicIK3eqe4U7xQKaY0rOtPldUHjfKDz3BgTwsstEhCV4Y4n6vCJv0Z_IiRJYIlk0LutbWXDeqMJ-Zpx0nLLpv8fYpvcExpTCzt88yYBNdJDEPo9rjfRaJcaEI7OQ_ZDWHSHfIV6emgY-2P3BWDymVS');
+                          "
+                        ></div>
+                      </div>
+                      <div class="flex flex-col">
+                        <p class="font-semibold text-text-primary">
+                          The Song of Achilles
+                        </p>
+                        <p class="text-sm text-text-secondary">
+                          Madeline Miller
+                        </p>
+                        <p class="mt-2 text-sm text-text-secondary">
+                          Душераздирающий пересказ греческого мифа, который
+                          останется с вами надолго.
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      class="group flex items-start gap-4 rounded-2xl bg-surface p-4 transition-colors hover:bg-slate-700"
+                    >
+                      <div class="w-20 shrink-0">
+                        <div
+                          class="w-full rounded-lg bg-cover bg-center bg-no-repeat aspect-[3/4]"
+                          style="
+                            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAihk0lu8UMuTarCheKwuyT5_G8--rPIRtNGYOQKPggpKzcFpF-2ut14uslZezYukl7nu7EAb-4WVDICYgpRFyIa-SzeAepdT7ufrfFItKVTWfSZvk-LBfJNqR4FHeKOA7ABxJXkk1u5gPpo4T1kSBMoxQO6jnELY2tthXWPsSoHhHAvWQVjt0JtKuSKqSgoVRYEhBMGw7ksbdgMoQixqsbQRnQ3DIyI7L-fxPPLu2mLXFs9eqkwKyvjONzj6-_zJoyE_NAMYQC_e6Q');
+                          "
+                        ></div>
+                      </div>
+                      <div class="flex flex-col">
+                        <p class="font-semibold text-text-primary">
+                          Klara and the Sun
+                        </p>
+                        <p class="text-sm text-text-secondary">
+                          Kazuo Ishiguro
+                        </p>
+                        <p class="mt-2 text-sm text-text-secondary">
+                          Глубоко трогательная история о любви, человечности и
+                          искусственном интеллекте.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section class="flex flex-col gap-4">
+                  <div class="flex items-center justify-between">
+                    <h2 class="text-white text-2xl font-bold">
+                      Рекомендуют друзья
+                    </h2>
+                    <a
+                      class="text-sm font-medium text-primary hover:underline"
+                      href="#"
+                      >Показать все</a
+                    >
+                  </div>
+                  <div class="flex flex-col gap-4">
+                    <div
+                      class="group flex items-start gap-4 rounded-2xl bg-surface p-4 transition-colors hover:bg-slate-700"
+                    >
+                      <div class="w-20 shrink-0">
+                        <div
+                          class="w-full rounded-lg bg-cover bg-center bg-no-repeat aspect-[3/4]"
+                          style="
+                            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuANh5XcCwHZhWragxpaDRmW5QQ1PSAXCVYXUymD-mJ9_WPm0pxvKcvX70vuAf2blMspJUcR3hEN4u7Ttj8M7X06ELNEHcrFU-D2yuSpLemZLRT-Tx36tPFjFj03RiZ0cFVjqfmNIrpHu_iEdkygSsreEWOBiC9fWr94hgsxvwnh8CBthYeB1hvKWe543clnof2ouh8x5ODsBIp3ILjBLuX1D9hs9pAb73s4L7BDvsFwKmzstEPGtYBwT9ziqIzeZ70nTuu8Suqyqftf');
+                          "
+                        ></div>
+                      </div>
+                      <div class="flex grow flex-col">
+                        <p class="font-semibold text-text-primary">Dune</p>
+                        <p class="text-sm text-text-secondary">Frank Herbert</p>
+                        <div class="mt-2 flex items-center gap-2">
+                          <div
+                            class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-6"
+                            style="
+                              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB5ldyRjRFtf5VKg6XxII4Bgve9hqPjINFNgH8u1IuZRkcNsSQ9naLRkLAMpcEuZsfm99y10tE430rVuLP83m4K3FmzSzgHk4TevaazKiE_rPuJSG4uGoAGjYYkW8z3L3v9ZDwcbCz1Ha2mu_iFetmRYt55eRKk6WHOlp-Qtr9Fnh-HnwEGE1dcrf_QgShMbfUEK1WR_taRxwHHVIDYVduklPFbYxZ7Mre7-UKJz80kAElXv2C2T7on5UJGvhlsk7YOG0l_VjHgJ4uu');
+                            "
+                          ></div>
+                          <p class="text-sm text-text-secondary">
+                            Рекомендует
+                            <span class="font-semibold text-text-primary"
+                              >Elena V.</span
+                            >
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="group flex items-start gap-4 rounded-2xl bg-surface p-4 transition-colors hover:bg-slate-700"
+                    >
+                      <div class="w-20 shrink-0">
+                        <div
+                          class="w-full rounded-lg bg-cover bg-center bg-no-repeat aspect-[3/4]"
+                          style="
+                            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAXTmZOXKkNUVpRszH3tYKiL9P25M_9uQrMchregLaqgq3c5TLVSAnICWz5qLV7-Z7uBRCYud16yMRoKwdwg5O2NjaHK9ZbaP0g1ECzunnSlg3dUj3sIKUSJoEKr5ct29EUwRlrDwVW3AroUTGArxmlsfu9M7H2_UFWpANcu1Gun691YFP1V4yMU1iyWdy43_fInIM3tGWC81Ho7aqEkpkzEnlOGbfZQ9J4rTuO8jfiZAeA_f2eMBjd2Z2BtTCvSJG6XwNSffz5_VXs');
+                          "
+                        ></div>
+                      </div>
+                      <div class="flex grow flex-col">
+                        <p class="font-semibold text-text-primary">Circe</p>
+                        <p class="text-sm text-text-secondary">
+                          Madeline Miller
+                        </p>
+                        <div class="mt-2 flex items-center gap-2">
+                          <div
+                            class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-6"
+                            style="
+                              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAV8JrlEP0gepkBbQCRGXckyXi5SAHR-zXyZsTlqe4rcfqDRYaxUDoV1fK5cY7er3EDNlGEZf-WZrXUmwgqdZ12h3rA2wIM2PsKwRao-JxPcLAShMD6C88pLZ9OyNDp4R75IXi2Q5uzez13TRGdvPHYdAAgjo498o5ZOKaPUGssuJNPjB0i_D3M-UlWZl-4BYCaNK4maFFt4yDVj2Sb4pfpptaGismwA0KpvQ0TrMDOA8MIY4soClyn0M0l3jpxKwlgjT5QjfTh4sPb');
+                            "
+                          ></div>
+                          <p class="text-sm text-text-secondary">
+                            Рекомендует
+                            <span class="font-semibold text-text-primary"
+                              >Mark Chen</span
+                            >
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </main>
+            <footer class="mt-16 border-t border-surface py-12">
+              <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                <div class="col-span-2 lg:col-span-1">
+                  <div class="flex items-center gap-3 text-white">
+                    <div class="size-6 text-primary">
+                      <svg
+                        fill="none"
+                        viewBox="0 0 48 48"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z"
+                          fill="currentColor"
+                        ></path>
+                      </svg>
+                    </div>
+                    <h2
+                      class="text-white text-xl font-bold leading-tight tracking-[-0.015em]"
+                    >
+                      ShelfNet
+                    </h2>
+                  </div>
+                  <p class="text-sm text-text-secondary mt-4">
+                    Место, где книги и люди соединяются.
+                  </p>
+                </div>
+                <div class="flex flex-col gap-3">
+                  <h3 class="font-bold text-text-primary">Платформа</h3>
+                  <a
+                    class="text-sm text-text-secondary hover:text-primary transition-colors"
+                    href="#"
+                    >Каталог книг</a
+                  >
+                  <a
+                    class="text-sm text-text-secondary hover:text-primary transition-colors"
+                    href="#"
+                    >Сообщества</a
+                  >
+                  <a
+                    class="text-sm text-text-secondary hover:text-primary transition-colors"
+                    href="#"
+                    >Популярное</a
+                  >
+                </div>
+                <div class="flex flex-col gap-3">
+                  <h3 class="font-bold text-text-primary">Компания</h3>
+                  <a
+                    class="text-sm text-text-secondary hover:text-primary transition-colors"
+                    href="#"
+                    >О нас</a
+                  >
+                  <a
+                    class="text-sm text-text-secondary hover:text-primary transition-colors"
+                    href="#"
+                    >Карьера</a
+                  >
+                  <a
+                    class="text-sm text-text-secondary hover:text-primary transition-colors"
+                    href="#"
+                    >Контакты</a
+                  >
+                </div>
+                <div class="flex flex-col gap-3">
+                  <h3 class="font-bold text-text-primary">Право</h3>
+                  <a
+                    class="text-sm text-text-secondary hover:text-primary transition-colors"
+                    href="#"
+                    >Условия использования</a
+                  >
+                  <a
+                    class="text-sm text-text-secondary hover:text-primary transition-colors"
+                    href="#"
+                    >Политика конфиденциальности</a
+                  >
+                </div>
+                <div class="flex flex-col gap-3">
+                  <h3 class="font-bold text-text-primary">Соцсети</h3>
+                  <a
+                    class="text-sm text-text-secondary hover:text-primary transition-colors"
+                    href="#"
+                    >Twitter</a
+                  >
+                  <a
+                    class="text-sm text-text-secondary hover:text-primary transition-colors"
+                    href="#"
+                    >Instagram</a
+                  >
+                  <a
+                    class="text-sm text-text-secondary hover:text-primary transition-colors"
+                    href="#"
+                    >Facebook</a
+                  >
+                </div>
+              </div>
+              <div class="mt-12 pt-8 border-t border-surface text-center">
+                <p class="text-sm text-text-secondary">
+                  © 2024 ShelfNet. Все права защищены.
+                </p>
+              </div>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

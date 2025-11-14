@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>ShelfNet Search</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+    </style>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#3b82f6",
+              "background-light": "#f5f7f8",
+              "background-dark": "#0f172a",
+              "surface-dark": "#1e293b",
+              "text-dark": "#f8fafc",
+              "text-muted-dark": "#94a3b8",
+            },
+            fontFamily: {
+              display: ["Inter", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+              lg: "1rem",
+              xl: "1.5rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="font-display bg-background-light dark:bg-background-dark">
+    <div
+      class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden"
+    >
+      <div class="layout-container flex h-full grow flex-col">
+        <div
+          class="px-4 sm:px-10 md:px-20 lg:px-40 flex flex-1 justify-center py-5"
+        >
+          <div
+            class="layout-content-container flex flex-col max-w-[960px] flex-1"
+          >
+            <!-- PageHeading -->
+            <div class="flex flex-wrap justify-center text-center gap-3 p-4">
+              <div class="flex min-w-72 flex-col gap-3">
+                <h1
+                  class="text-text-dark text-4xl font-black leading-tight tracking-[-0.033em]"
+                >
+                  What are you looking for?
+                </h1>
+                <p
+                  class="text-text-muted-dark text-base font-normal leading-normal"
+                >
+                  Find books, people and communities
+                </p>
+              </div>
+            </div>
+            <!-- SearchBar -->
+            <div class="px-4 py-3">
+              <label class="flex flex-col min-w-40 h-12 w-full">
+                <div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+                  <div
+                    class="text-text-muted-dark flex border-none bg-surface-dark items-center justify-center pl-4 rounded-l-lg border-r-0"
+                  >
+                    <span class="material-symbols-outlined">search</span>
+                  </div>
+                  <input
+                    class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-dark focus:outline-0 focus:ring-2 focus:ring-primary border-none bg-surface-dark h-full placeholder:text-text-muted-dark px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal"
+                    placeholder="Search by title, author, tags..."
+                    value=""
+                  />
+                </div>
+              </label>
+            </div>
+            <!-- Tabs -->
+            <div class="pb-3 mt-4">
+              <div class="flex border-b border-surface-dark px-4 gap-8">
+                <a
+                  class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-text-dark pb-[13px] pt-4"
+                  href="#"
+                >
+                  <p
+                    class="text-sm font-bold leading-normal tracking-[0.015em]"
+                  >
+                    Books
+                  </p>
+                </a>
+                <a
+                  class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-text-muted-dark pb-[13px] pt-4 hover:text-text-dark transition-colors"
+                  href="#"
+                >
+                  <p
+                    class="text-sm font-bold leading-normal tracking-[0.015em]"
+                  >
+                    Users
+                  </p>
+                </a>
+                <a
+                  class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-text-muted-dark pb-[13px] pt-4 hover:text-text-dark transition-colors"
+                  href="#"
+                >
+                  <p
+                    class="text-sm font-bold leading-normal tracking-[0.015em]"
+                  >
+                    Communities
+                  </p>
+                </a>
+              </div>
+            </div>
+            <!-- ImageGrid -->
+            <div
+              class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-4 p-4"
+            >
+              <div class="flex flex-col gap-3 pb-3 group">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg bg-[#334155] group-hover:scale-105 transition-transform duration-300"
+                  data-alt="Book cover for The Midnight Library"
+                  style="
+                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBa7liu9BX1CcNYzc2TfaV9rF3gf4Ji8GKuIUWy7KyQIMv46i1SbQujFbbKRSOEZ5ehN-veEL5FJFfk0lR6ah0l87RB1pOrXbLNOcv_tlYgBnz-G0CcEyLPfi-98CKjgUCr7Bap3Tr4zMDeCs3ew3DcHsv-e_wlYeO2SCbv9KAIJ-m93HU2rSZ6sGi_BygaLIHtMxxRs42Wq6eTJ8HYiTyUCfFfC6CIPqTsqtAEJx7jTysr6jqtWGmH9fNrh1vsGFbVaaOp3AmONv3Q');
+                  "
+                ></div>
+                <div>
+                  <p
+                    class="text-text-dark text-base font-medium leading-normal"
+                  >
+                    The Midnight Library
+                  </p>
+                  <p
+                    class="text-text-muted-dark text-sm font-normal leading-normal"
+                  >
+                    Matt Haig
+                  </p>
+                </div>
+              </div>
+              <div class="flex flex-col gap-3 pb-3 group">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg bg-[#334155] group-hover:scale-105 transition-transform duration-300"
+                  data-alt="Book cover for Project Hail Mary"
+                  style="
+                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD5VfxvptujLHj33DBi5BYTmPJccuOtN0jISdlWOpUiY5wwpgY-WzEmkI30JNFmXIT4iKiOTxZKb9BwrQvgHVLnuJtFwkgFGy3U_UxDkI4bUo8yBUwtGpBWSCxRGPG-xikuvZB-S5y4NGvKmb30p4G98A0ue4IKKVmoVR3y-A4tGSrEP-p5NO5eBV2ol_ZD-Fnns8V3Z7obL-XkfbklvlXGPUHmUSNb9izbsLkPHymvPaX1yNVkI2IjEhGS10_sxquNayZe_qxAmEai');
+                  "
+                ></div>
+                <div>
+                  <p
+                    class="text-text-dark text-base font-medium leading-normal"
+                  >
+                    Project Hail Mary
+                  </p>
+                  <p
+                    class="text-text-muted-dark text-sm font-normal leading-normal"
+                  >
+                    Andy Weir
+                  </p>
+                </div>
+              </div>
+              <div class="flex flex-col gap-3 pb-3 group">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg bg-[#334155] group-hover:scale-105 transition-transform duration-300"
+                  data-alt="Book cover for Dune"
+                  style="
+                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDY3tdagv6xmnRbw2RdQclb2Ty7TTB0gTTnZFyl_jVf-EpfeRpiNz7xZqfbCzagkLmHWGV3erHMVPNrufThVFNJ-tttd6HmcLQ18FFcu9YJAyHwAeaBR_ek0SBjSj8o05SOyzidiTDC2tsm9fwwc4YvQJS5PODawkDkoiwoxySYKsJfttqE9HwE0ryL5CI_hpTWJ_pNR_9kDk9zD4IUUXS46jUlKDNlPEHnIdI3QwJGctjAhmFYHDGmeq2Iw-C62kpsJlgsx2Xbb30Y');
+                  "
+                ></div>
+                <div>
+                  <p
+                    class="text-text-dark text-base font-medium leading-normal"
+                  >
+                    Dune
+                  </p>
+                  <p
+                    class="text-text-muted-dark text-sm font-normal leading-normal"
+                  >
+                    Frank Herbert
+                  </p>
+                </div>
+              </div>
+              <div class="flex flex-col gap-3 pb-3 group">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg bg-[#334155] group-hover:scale-105 transition-transform duration-300"
+                  data-alt="Book cover for Klara and the Sun"
+                  style="
+                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCixbZxoUkpKlsG9Z_zR8dSenC-uQLApWmscMPaIIuvey6fenZalzR9yKa0N3soR2lIyX7BLfq-ThPQV7XJJ8leKpoukqGIQ-gAtVq0oevRApjTXkb6NrwKYSzPdnt3nJGqnI7PfQFknKy_g4655nbWoyMFq1V_uqrZ2dH-IM9zkNQ1sUf2vCcHogDGMQzBPsrH2H-UofOemdPI1iAxLKEAeh_f074gHEKRQ1y286n6ENqGCOqtflXLUYGlY8xIrLPaxLL136ONjw5o');
+                  "
+                ></div>
+                <div>
+                  <p
+                    class="text-text-dark text-base font-medium leading-normal"
+                  >
+                    Klara and the Sun
+                  </p>
+                  <p
+                    class="text-text-muted-dark text-sm font-normal leading-normal"
+                  >
+                    Kazuo Ishiguro
+                  </p>
+                </div>
+              </div>
+              <div class="flex flex-col gap-3 pb-3 group">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg bg-[#334155] group-hover:scale-105 transition-transform duration-300"
+                  data-alt="Book cover for The Four Winds"
+                  style="
+                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAXksXx9CTRtpFZn896K2K3Vv3l3ITNcQ1aMfZixWds0CE8jyxuJR8Jtq-h-Y8EZE-5GvWzVshohqu3k5AxcNOZQTc0sK-6IRg_7lUblnkSvG0mUq6ndxt6uJV0NGYgGkC9b3np3EmWUn5Fyl83vZxvBCdh_XbmN5zTwU8AuCDZkv4Zw9bfAlwWY0cOEnRR95xrabcSAjw5TavphPdRAI9Mul4qEtyPJywdaCMCUF9oAqzsYWztz8KvMlU1zcQ_AeUxZ6Ycwp606f9L');
+                  "
+                ></div>
+                <div>
+                  <p
+                    class="text-text-dark text-base font-medium leading-normal"
+                  >
+                    The Four Winds
+                  </p>
+                  <p
+                    class="text-text-muted-dark text-sm font-normal leading-normal"
+                  >
+                    Kristin Hannah
+                  </p>
+                </div>
+              </div>
+              <div class="flex flex-col gap-3 pb-3 group">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg bg-[#334155] group-hover:scale-105 transition-transform duration-300"
+                  data-alt="Book cover for Atomic Habits"
+                  style="
+                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuASlVxp7g8B5LL8ymt1AQj8Vlwwp0sKRGyZ-CIEkMWekVhEbNdJ1lNCTObz21xnEvQDDpqmwFd-l9km4SS1napL1_W8OQ14h43n0m8so4vewF6Vv7iBsb7E-XlzOOdBb845c5_cqKHYNbOgLUbEqWWRKyuU32JgF_0_-3MgxkEdWXPnmgLoo7DfPq2qqJJ_bJJ0KKkgtycEz4Xui3A1vJN29SjM9rb1orx3kmGyFs8PEliHiM0o1DW3TnHZT5kM3ZSoQziqb0E0CO9c');
+                  "
+                ></div>
+                <div>
+                  <p
+                    class="text-text-dark text-base font-medium leading-normal"
+                  >
+                    Atomic Habits
+                  </p>
+                  <p
+                    class="text-text-muted-dark text-sm font-normal leading-normal"
+                  >
+                    James Clear
+                  </p>
+                </div>
+              </div>
+              <div class="flex flex-col gap-3 pb-3 group">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg bg-[#334155] group-hover:scale-105 transition-transform duration-300"
+                  data-alt="Book cover for Circe"
+                  style="
+                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAPr_eNNl3IzVv9uGzAGA1ecyWS5epLENIRnPD2fpdSkRALcsHrWO1WDrj9SigT9ZdNo6Qa5IU4qqeUKUBg9exC9Duvk4jszRSPkXuIwo3jL9IdkRaX92qQLxd3R3kAmUmHU1DichCJKav3s815pn_50Wis5zlIPGMoe2z9DOg29odwRTRC-VMC_yrgALuuyrJ_kAPyqwz-U4ZzepsnOu-yVVVGSIT44yQo6epxDHZyV3zIU0dnSTl4MVtePYKMGcDEMLYRGwXzNRrx');
+                  "
+                ></div>
+                <div>
+                  <p
+                    class="text-text-dark text-base font-medium leading-normal"
+                  >
+                    Circe
+                  </p>
+                  <p
+                    class="text-text-muted-dark text-sm font-normal leading-normal"
+                  >
+                    Madeline Miller
+                  </p>
+                </div>
+              </div>
+              <div class="flex flex-col gap-3 pb-3 group">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg bg-[#334155] group-hover:scale-105 transition-transform duration-300"
+                  data-alt="Book cover for The Song of Achilles"
+                  style="
+                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBQwGa83XVldvKYyRaEzq5F1dxhF3WXpUi45uM1uYB077AF2JN_C665Wxcf9i6poac9JStssWDmIkaAoWMd1rzrq6jmpBEekFieC8ZHYVjgK8eCu4gTZGCcczHviR6uBGh4NJfFjkhvrmd9SKStEcFrWXWHm8K18sOQ-eVXAoWFQtZcun05Oc0FU2wlmX4viiuxS4kB_H0lnH_-G9Z3BAKIgQiLjqCwpZalUKr9_sigyjkRq4cJdY_6TkPAHdDwjyIVWglkvmfXnvg5');
+                  "
+                ></div>
+                <div>
+                  <p
+                    class="text-text-dark text-base font-medium leading-normal"
+                  >
+                    The Song of Achilles
+                  </p>
+                  <p
+                    class="text-text-muted-dark text-sm font-normal leading-normal"
+                  >
+                    Madeline Miller
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- SingleButton -->
+            <div class="flex px-4 py-8 justify-center">
+              <button
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-transparent text-text-muted-dark text-sm font-bold leading-normal tracking-[0.015em] hover:text-text-dark hover:bg-surface-dark/50 transition-colors"
+              >
+                <span class="truncate">Clear search</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

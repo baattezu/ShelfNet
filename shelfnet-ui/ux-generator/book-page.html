@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>ShelfNet - Book Details</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#3b82f6", // Mapped to accent
+              "background-dark": "#0f172a",
+              "surface-dark": "#1e293b",
+              "text-primary-dark": "#f8fafc",
+              "text-secondary-dark": "#94a3b8",
+              "accent-dark": "#3b82f6",
+              "button-primary": "#1d4ed8", // Adjusted to match hover state from description #2563eb
+              "button-secondary": "#166534", // Adjusted to match hover state from description #15803d
+            },
+            fontFamily: {
+              display: ["Inter", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+              lg: "1rem",
+              xl: "1.5rem",
+              "2xl": "2rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+        font-size: inherit; /* Allow parent to control size */
+      }
+    </style>
+  </head>
+  <body class="bg-background-dark font-display text-text-primary-dark">
+    <div
+      class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden"
+    >
+      <!-- TopNavBar Component -->
+      <header
+        class="flex items-center justify-between whitespace-nowrap border-b border-solid border-surface-dark px-6 md:px-10 py-3 max-w-7xl mx-auto w-full"
+      >
+        <div class="flex items-center gap-8">
+          <div class="flex items-center gap-4 text-text-primary-dark">
+            <div class="size-6 text-primary">
+              <svg
+                fill="none"
+                viewbox="0 0 48 48"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </div>
+            <h2
+              class="text-text-primary-dark text-lg font-bold leading-tight tracking-[-0.015em]"
+            >
+              ShelfNet
+            </h2>
+          </div>
+          <nav class="hidden md:flex items-center gap-9">
+            <a
+              class="text-text-primary-dark text-sm font-medium leading-normal hover:text-primary transition-colors"
+              href="#"
+              >Home</a
+            >
+            <a
+              class="text-text-primary-dark text-sm font-medium leading-normal hover:text-primary transition-colors"
+              href="#"
+              >My Books</a
+            >
+            <a
+              class="text-text-primary-dark text-sm font-medium leading-normal hover:text-primary transition-colors"
+              href="#"
+              >Browse</a
+            >
+            <a
+              class="text-text-primary-dark text-sm font-medium leading-normal hover:text-primary transition-colors"
+              href="#"
+              >Community</a
+            >
+          </nav>
+        </div>
+        <div class="flex flex-1 justify-end items-center gap-4 md:gap-8">
+          <label class="hidden sm:flex flex-col min-w-40 !h-10 max-w-64">
+            <div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+              <div
+                class="text-text-secondary-dark flex bg-surface-dark items-center justify-center pl-3 rounded-l-lg border-r-0"
+              >
+                <span class="material-symbols-outlined" style="font-size: 20px"
+                  >search</span
+                >
+              </div>
+              <input
+                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-primary-dark focus:outline-0 focus:ring-2 focus:ring-primary border-none bg-surface-dark h-full placeholder:text-text-secondary-dark px-4 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal"
+                placeholder="Search"
+                value=""
+              />
+            </div>
+          </label>
+          <div class="flex gap-2">
+            <button
+              class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-surface-dark text-text-primary-dark gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5 hover:bg-primary/20 transition-colors"
+            >
+              <span
+                class="material-symbols-outlined text-text-secondary-dark"
+                style="font-size: 20px"
+                >notifications</span
+              >
+            </button>
+            <button
+              class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-surface-dark text-text-primary-dark gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5 hover:bg-primary/20 transition-colors"
+            >
+              <span
+                class="material-symbols-outlined text-text-secondary-dark"
+                style="font-size: 20px"
+                >chat_bubble</span
+              >
+            </button>
+          </div>
+          <div
+            class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+            data-alt="User avatar image"
+            style="
+              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD2Jl5Cp1u6UYBVrRv3GXAgp-CP8DaUpcSuR3UK1FDeQvmA2A9hqTakuAmnEA3MIgMyDOvTEKDlJ-kqwcPbHw9ZEyHXT6jBP_KpKRS88gXIcJh10_vvawouAk4WKKJSBab0jEApjZ8VOwpVejBaR1uzzl7RYtY7NShkE36u-6v6Cxp3vMmduDz5lXLH4NwvNbofEpGOtkFMr6WRTml2szgDswBmmLSSBzCEExwl-hGmGsEgrToKu8tWM6kG02bzD7RmqtUqOWg3msQs');
+            "
+          ></div>
+        </div>
+      </header>
+      <!-- Main Content Area -->
+      <main class="w-full max-w-6xl mx-auto px-6 py-8">
+        <div class="flex flex-col gap-12">
+          <!-- Hero Section -->
+          <section
+            class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-[256px_1fr] gap-8 md:gap-12"
+          >
+            <!-- Left Column: Book Cover -->
+            <div class="w-64 h-96 mx-auto md:mx-0">
+              <div
+                class="w-full h-full bg-center bg-no-repeat bg-cover rounded-xl shadow-lg shadow-black/30"
+                data-alt="Book cover for 'The Great Gatsby'"
+                style="
+                  background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDPX0sXGoey6AqmTwCvBpf6tBpEDkxtGGTFZo_tJwRoxih5vFJIkcWAQsBRiKI57vwOw0ymkwPo9a6B4x57i_BBYz-xNkqERzfdiZfOfcHzPYo4MqUahk-vLrTcKNkIPjrEHGhwttJjd_Pd5vK4-KoCmt0ZJJGwsIFlpSP9me8PsMyeQQk4NkO3b5am1vFikN6SRUGWU1--ARr92P6lzpb93T5owlBEWsA5TgrYphH1vGXpcmwN-Eg5w0Y4gZqzZCEWHhzm5s6OcJpn');
+                "
+              ></div>
+            </div>
+            <!-- Right Column: Book Info & Actions -->
+            <div class="flex flex-col gap-4 pt-2 text-center md:text-left">
+              <p
+                class="text-primary text-sm font-medium leading-normal underline cursor-pointer hover:no-underline"
+              >
+                F. Scott Fitzgerald
+              </p>
+              <h1
+                class="text-text-primary-dark tracking-tight text-3xl font-semibold leading-tight"
+              >
+                The Great Gatsby
+              </h1>
+              <div
+                class="flex justify-center md:justify-start items-center gap-3 flex-wrap py-3"
+              >
+                <button
+                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-button-primary hover:bg-blue-600 transition-colors text-white text-sm font-bold leading-normal tracking-[0.015em]"
+                >
+                  <span class="truncate">Want to Read</span>
+                </button>
+                <button
+                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-button-secondary hover:bg-green-600 transition-colors text-white text-sm font-bold leading-normal tracking-[0.015em]"
+                >
+                  <span class="truncate">Finished Reading</span>
+                </button>
+                <button
+                  class="flex min-w-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 w-10 bg-surface-dark hover:bg-primary/20 transition-colors text-text-primary-dark text-sm font-bold"
+                >
+                  <span class="material-symbols-outlined">more_horiz</span>
+                </button>
+              </div>
+              <div class="border-b border-surface-dark mt-4">
+                <nav class="flex items-center gap-6 -mb-px">
+                  <a
+                    class="py-3 px-1 text-sm font-medium text-primary border-b-2 border-primary"
+                    href="#"
+                    >Описание</a
+                  >
+                  <a
+                    class="py-3 px-1 text-sm font-medium text-text-secondary-dark hover:text-text-primary-dark transition-colors"
+                    href="#"
+                    >Отзывы (73)</a
+                  >
+                  <a
+                    class="py-3 px-1 text-sm font-medium text-text-secondary-dark hover:text-text-primary-dark transition-colors"
+                    href="#"
+                    >Цитаты (9K)</a
+                  >
+                  <a
+                    class="py-3 px-1 text-sm font-medium text-text-secondary-dark hover:text-text-primary-dark transition-colors"
+                    href="#"
+                    >Читают сейчас (46.3K)</a
+                  >
+                </nav>
+              </div>
+            </div>
+          </section>
+          <!-- About the Book Section -->
+          <section class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+            <div class="md:col-span-2 flex flex-col gap-6">
+              <h2 class="text-xl font-bold">О книге</h2>
+              <p class="text-text-secondary-dark leading-relaxed">
+                "The Great Gatsby" is a 1925 novel by American writer F. Scott
+                Fitzgerald. Set in the Jazz Age on Long Island, near New York
+                City, the novel depicts first-person narrator Nick Carraway's
+                interactions with mysterious millionaire Jay Gatsby and Gatsby's
+                obsession to reunite with his former lover, Daisy Buchanan. The
+                novel explores themes of decadence, idealism, resistance to
+                change, social upheaval, and excess, creating a portrait of the
+                Roaring Twenties that has been described as a cautionary tale
+                regarding the American Dream.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="inline-block bg-surface-dark text-text-primary-dark px-3 py-1 rounded-full text-sm hover:bg-primary transition-colors cursor-pointer"
+                  >#Философия</span
+                >
+                <span
+                  class="inline-block bg-surface-dark text-text-primary-dark px-3 py-1 rounded-full text-sm hover:bg-primary transition-colors cursor-pointer"
+                  >#Классика</span
+                >
+                <span
+                  class="inline-block bg-surface-dark text-text-primary-dark px-3 py-1 rounded-full text-sm hover:bg-primary transition-colors cursor-pointer"
+                  >#Роман</span
+                >
+                <span
+                  class="inline-block bg-surface-dark text-text-primary-dark px-3 py-1 rounded-full text-sm hover:bg-primary transition-colors cursor-pointer"
+                  >#Драма</span
+                >
+              </div>
+            </div>
+            <div class="flex flex-col gap-4">
+              <div class="flex items-center gap-3 text-sm">
+                <span class="material-symbols-outlined text-text-secondary-dark"
+                  >badge</span
+                >
+                <span class="text-text-secondary-dark w-28">Возраст:</span>
+                <span class="font-medium">16+</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm">
+                <span class="material-symbols-outlined text-text-secondary-dark"
+                  >collections_bookmark</span
+                >
+                <span class="text-text-secondary-dark w-28">Серия:</span>
+                <span class="font-medium">Классика литературы</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm">
+                <span class="material-symbols-outlined text-text-secondary-dark"
+                  >translate</span
+                >
+                <span class="text-text-secondary-dark w-28">Переводчик:</span>
+                <span class="font-medium">Е. Калашникова</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm">
+                <span class="material-symbols-outlined text-text-secondary-dark"
+                  >menu_book</span
+                >
+                <span class="text-text-secondary-dark w-28">Страниц:</span>
+                <span class="font-medium">218</span>
+              </div>
+            </div>
+          </section>
+          <!-- Statistics & Activity Section -->
+          <section class="bg-surface-dark p-6 rounded-2xl flex flex-col gap-4">
+            <h3 class="text-lg font-bold">Статистика и активность</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <div class="flex flex-col gap-2">
+                <div class="flex items-center justify-between text-sm">
+                  <span
+                    class="flex items-center gap-2 text-text-secondary-dark"
+                  >
+                    <span
+                      class="material-symbols-outlined text-yellow-400"
+                      style="font-size: 20px"
+                      >thumb_up</span
+                    >
+                    Рекомендуют
+                  </span>
+                  <span class="font-medium">85%</span>
+                </div>
+                <div class="w-full bg-background-dark rounded-full h-2">
+                  <div
+                    class="bg-yellow-400 h-2 rounded-full"
+                    style="width: 85%"
+                  ></div>
+                </div>
+              </div>
+              <div class="flex flex-col gap-2">
+                <div class="flex items-center justify-between text-sm">
+                  <span
+                    class="flex items-center gap-2 text-text-secondary-dark"
+                  >
+                    <span
+                      class="material-symbols-outlined text-orange-400"
+                      style="font-size: 20px"
+                      >local_fire_department</span
+                    >
+                    Интересная
+                  </span>
+                  <span class="font-medium">92%</span>
+                </div>
+                <div class="w-full bg-background-dark rounded-full h-2">
+                  <div
+                    class="bg-orange-400 h-2 rounded-full"
+                    style="width: 92%"
+                  ></div>
+                </div>
+              </div>
+              <div class="flex flex-col gap-2">
+                <div class="flex items-center justify-between text-sm">
+                  <span
+                    class="flex items-center gap-2 text-text-secondary-dark"
+                  >
+                    <span
+                      class="material-symbols-outlined text-cyan-400"
+                      style="font-size: 20px"
+                      >auto_stories</span
+                    >
+                    Полезная
+                  </span>
+                  <span class="font-medium">78%</span>
+                </div>
+                <div class="w-full bg-background-dark rounded-full h-2">
+                  <div
+                    class="bg-cyan-400 h-2 rounded-full"
+                    style="width: 78%"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Similar Books Section -->
+          <section class="flex flex-col gap-4">
+            <h2 class="text-xl font-bold">Похожие книги</h2>
+            <div class="flex overflow-x-auto space-x-4 pb-4 -mx-6 px-6">
+              <!-- Book Card 1 -->
+              <div class="flex-shrink-0 w-36 group">
+                <div
+                  class="w-full h-52 bg-center bg-no-repeat bg-cover rounded-lg shadow-lg shadow-black/20 mb-2 transform transition-transform duration-300 group-hover:scale-105"
+                  data-alt="Cover of 'To Kill a Mockingbird'"
+                  style="
+                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDyBhewzCptpBg6lfGJQCRKB-gMWPmId3BJI9J-5DJQp5KW-9j-8tUY9qG8xn3jTbrkHQfA87_FDrnrouPVLF6nl6XOwu2lFleLlXVIHxWci6VY2KsbafZ5WfUM_fE1o2GNt-PfcPqB-AnzPTw6tgKwkYCqxDNS4J0UfaO4pB6H0E5KPZb8xsykwL2eK4PCzwZLV6wmvxMg52ZAcybZ9F5_l6-lLGoftO5VPqCrmu4nkLk5GnAYkL4B04yNQRBVouxw3XDjDWF6eeOU');
+                  "
+                ></div>
+                <h4
+                  class="text-sm font-medium truncate group-hover:text-primary"
+                >
+                  To Kill a Mockingbird
+                </h4>
+                <p class="text-xs text-text-secondary-dark truncate">
+                  Harper Lee
+                </p>
+              </div>
+              <!-- Book Card 2 -->
+              <div class="flex-shrink-0 w-36 group">
+                <div
+                  class="w-full h-52 bg-center bg-no-repeat bg-cover rounded-lg shadow-lg shadow-black/20 mb-2 transform transition-transform duration-300 group-hover:scale-105"
+                  data-alt="Cover of '1984'"
+                  style="
+                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBHIMk2ynfakjgfdENH-2RnpifKjleXzLos2sZXSe-oVUYCxDyNUEu1D_o79pJCx3OQLS54WT9ymsiDDHpZ-LiSPp6Osshp1lZYAuw0xkPGmvdajib5Qrm05sMzZbu3YZzuMQ8FEcE4boeJLdD4Fe8ka7jdFC1qqYRp2jJPGfg87uUxYEGW6i3s7H6qk6o7aYpmrV7SWlev0SDPE-gWM1QnfTWDKsiySh3PYqWaks7i8jgDjBtSs77lPn3vBGTvVZiThH1TNKb-edpb');
+                  "
+                ></div>
+                <h4
+                  class="text-sm font-medium truncate group-hover:text-primary"
+                >
+                  1984
+                </h4>
+                <p class="text-xs text-text-secondary-dark truncate">
+                  George Orwell
+                </p>
+              </div>
+              <!-- Book Card 3 -->
+              <div class="flex-shrink-0 w-36 group">
+                <div
+                  class="w-full h-52 bg-center bg-no-repeat bg-cover rounded-lg shadow-lg shadow-black/20 mb-2 transform transition-transform duration-300 group-hover:scale-105"
+                  data-alt="Cover of 'The Catcher in the Rye'"
+                  style="
+                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDYc-vN-etWh-lV32Iwh7f8cWqHstBexAZFt_NNbjffSPf7CFC9Sdq5S2ALqKsBhOmDRX94k_lRRC2hVmp71-GEp1EtuhVEJbQBNE849Gb081sbL5FaOdHi1sTcvCoSIZGsgmGc1mjOHjrvQZwLBKIDR19OvI8HwmSCotDKp3FoaQG6T0fIzURliWqLFYRl6L9TjrC0g7qL1V-dtW_t9ZDQZqO1MM7YU0b_c4Bn1TILjDKBm2REaddtwGSiQosI5Qb3bXX0gPzMC2ac');
+                  "
+                ></div>
+                <h4
+                  class="text-sm font-medium truncate group-hover:text-primary"
+                >
+                  The Catcher in the Rye
+                </h4>
+                <p class="text-xs text-text-secondary-dark truncate">
+                  J.D. Salinger
+                </p>
+              </div>
+              <!-- Book Card 4 -->
+              <div class="flex-shrink-0 w-36 group">
+                <div
+                  class="w-full h-52 bg-center bg-no-repeat bg-cover rounded-lg shadow-lg shadow-black/20 mb-2 transform transition-transform duration-300 group-hover:scale-105"
+                  data-alt="Cover of 'Pride and Prejudice'"
+                  style="
+                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC2VVqDVe9pwvX05Ahxna6stfosljGxopwDVlaA809ODD2qiTbZhqz07Cvdh6xT6KoIMWKDq48haedsAUaBilCWz_42d2piXt_1jHto3wXcRnN55mK0GoLQEWJ76aoWNZ_NsM9erlDqT2lUrgi4tEC-ri3zePWhjMO0qgp02tIMURP85IRzVAjCuF3eJ7ThSoXVeStdltxI9QKJ3IToaVjYIurSz-A42ruGtKZOQT1e617EHPIvpdncovDalrzkA1U0_5eAkq_TAvG8');
+                  "
+                ></div>
+                <h4
+                  class="text-sm font-medium truncate group-hover:text-primary"
+                >
+                  Pride and Prejudice
+                </h4>
+                <p class="text-xs text-text-secondary-dark truncate">
+                  Jane Austen
+                </p>
+              </div>
+              <!-- Book Card 5 -->
+              <div class="flex-shrink-0 w-36 group">
+                <div
+                  class="w-full h-52 bg-center bg-no-repeat bg-cover rounded-lg shadow-lg shadow-black/20 mb-2 transform transition-transform duration-300 group-hover:scale-105"
+                  data-alt="Cover of 'The Lord of the Rings'"
+                  style="
+                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC1KDhJwUemQlYjnOnHCpykYyIHdFp9IlAmLuOZQF74HmAyHwcnHNmzDfeIY1T7_5ETL2IKeSsNseXIv6C0N3ZperQkRLSa-XnAbbhmF8VIccRCLWagKE4QcLgHwS6Y6VyRLbpe6qOJc8XEaRxKuJSipe_yUysUqWriTL9fl_Xx_KZZumxS4CQUOuxTM0Fx0dHlYeGVpv-R-7sJxOE8OuKmavI_M2hRchWti_kDXzlk5xGqorXAl1amfUvmaAZ9oGmeLTBXCMrYYp3n');
+                  "
+                ></div>
+                <h4
+                  class="text-sm font-medium truncate group-hover:text-primary"
+                >
+                  The Lord of the Rings
+                </h4>
+                <p class="text-xs text-text-secondary-dark truncate">
+                  J.R.R. Tolkien
+                </p>
+              </div>
+              <!-- Book Card 6 -->
+              <div class="flex-shrink-0 w-36 group">
+                <div
+                  class="w-full h-52 bg-center bg-no-repeat bg-cover rounded-lg shadow-lg shadow-black/20 mb-2 transform transition-transform duration-300 group-hover:scale-105"
+                  data-alt="Cover of 'Fahrenheit 451'"
+                  style="
+                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuArKYQkRnLQ1PKQK0a1lKYmxmOtVG64ETPbX4lLjmdF63lH2iRDfCfT69yG0sTRzsMlUQYnNck0_j5ZLUfxevRMGVi_zfZykAY5p-YerHba_tu48Dz2ole5L9rKFmv8k1wLC8bFN-fp5bBNLtweHvXTK6ZIk20r9DByenUI8WjYs2OEyyWT2NaA3b5XycVh_fTiVtNNv5hf3s5A_rIfj9T8h--YUf9LxRBUhJj7K84VYrJSGbNVg4cn7qijP3jYBIX9aTZb0AKBBKIn');
+                  "
+                ></div>
+                <h4
+                  class="text-sm font-medium truncate group-hover:text-primary"
+                >
+                  Fahrenheit 451
+                </h4>
+                <p class="text-xs text-text-secondary-dark truncate">
+                  Ray Bradbury
+                </p>
+              </div>
+            </div>
+          </section>
+          <!-- Reader Reviews Section -->
+          <section class="flex flex-col gap-4">
+            <h2 class="text-xl font-bold">Отзывы читателей</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <!-- Review Card 1 -->
+              <div class="bg-surface-dark p-6 rounded-2xl flex flex-col gap-4">
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-cover bg-center"
+                    data-alt="Avatar of user Elena"
+                    style="
+                      background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBuTGzGwnNyyCkDkqbwCDtngWpGEwQKvwA0pXZssLqbVMxv3Gr5J3J3Kj7Or2DdkSoQHvOoYWB0QgcFL47ZWdwsjZvGwBHsOu7FkJeCHArZfuYEygg88w-N7z9-WQ2ikVmYxuXcC0RLg9_CkF2VofQeix8x81T0ZIj_Zn1IYpgr6vQnlnNmOVV5W7S4SsY6xj_B5F44O1YweOSWi4utkeKM4PLAboaUD7jDgh_goNSGUMGbiFVag0M2WC9E0a9S2sDNIdSDsSkqQfKm');
+                    "
+                  ></div>
+                  <div>
+                    <p class="font-semibold">Elena V.</p>
+                    <div class="flex items-center text-yellow-400 text-sm">
+                      <span
+                        class="material-symbols-outlined"
+                        style="font-size: 16px"
+                        >star</span
+                      >
+                      <span
+                        class="material-symbols-outlined"
+                        style="font-size: 16px"
+                        >star</span
+                      >
+                      <span
+                        class="material-symbols-outlined"
+                        style="font-size: 16px"
+                        >star</span
+                      >
+                      <span
+                        class="material-symbols-outlined"
+                        style="font-size: 16px"
+                        >star</span
+                      >
+                      <span
+                        class="material-symbols-outlined"
+                        style="font-size: 16px"
+                        >star_half</span
+                      >
+                    </div>
+                  </div>
+                </div>
+                <p class="text-text-secondary-dark text-sm leading-relaxed">
+                  An absolute masterpiece. Fitzgerald's prose is poetic and
+                  haunting, and the story is a tragic commentary on the American
+                  Dream. It's a book that stays with you long after you've
+                  finished it...
+                </p>
+                <button
+                  class="text-primary text-sm font-medium self-start hover:underline"
+                >
+                  Показать полностью
+                </button>
+              </div>
+              <!-- Review Card 2 -->
+              <div class="bg-surface-dark p-6 rounded-2xl flex flex-col gap-4">
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-cover bg-center"
+                    data-alt="Avatar of user Alex"
+                    style="
+                      background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAYhS4oCAoIwXJ3VvUHOGzVT8Sd_Ygwd2vYvGd_slwZPaJ_-vFUIaQsE8bwO9CUL81q-xfkiLIDNm6hpNtpJu1mSU2D-gvrb4-uzD1IfvY5_RCXigZFkRcPO3N-e-8jjEm7E2rT_-CFiFOMGcZxN6W3CBhS_b3NrE66rmYZ3cXRJrUVThi5N9oIIzdJQdxKdk1eyJT8B66x2AW4oXhabqfTZYnn6qX5timtu0CA_SxGdP0cTX53S_13pTXZwb3kpU8kydg8rh6tL7Ox');
+                    "
+                  ></div>
+                  <div>
+                    <p class="font-semibold">Alex M.</p>
+                    <div class="flex items-center text-yellow-400 text-sm">
+                      <span
+                        class="material-symbols-outlined"
+                        style="font-size: 16px"
+                        >star</span
+                      >
+                      <span
+                        class="material-symbols-outlined"
+                        style="font-size: 16px"
+                        >star</span
+                      >
+                      <span
+                        class="material-symbols-outlined"
+                        style="font-size: 16px"
+                        >star</span
+                      >
+                      <span
+                        class="material-symbols-outlined"
+                        style="font-size: 16px"
+                        >star</span
+                      >
+                      <span
+                        class="material-symbols-outlined text-text-secondary-dark"
+                        style="font-size: 16px"
+                        >star</span
+                      >
+                    </div>
+                  </div>
+                </div>
+                <p class="text-text-secondary-dark text-sm leading-relaxed">
+                  A timeless classic for a reason. I found Gatsby to be a deeply
+                  compelling character, and the symbolism throughout the novel
+                  is brilliant. Highly recommended for any lover of classic
+                  literature.
+                </p>
+                <button
+                  class="text-primary text-sm font-medium self-start hover:underline"
+                >
+                  Показать полностью
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

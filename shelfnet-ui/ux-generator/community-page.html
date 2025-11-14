@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>ShelfNet Community Page</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+    </style>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#3b82f6",
+              "background-light":
+                "#f8fafc" /* Placeholder, not used in dark mode */,
+              "background-dark": "#0f172a",
+              surface: "#1e293b",
+              "text-primary": "#f8fafc",
+              "text-secondary": "#94a3b8" /* A slightly muted text color */,
+            },
+            fontFamily: {
+              display: ["Inter", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+              lg: "1rem",
+              xl: "1.25rem",
+              "2xl": "1.5rem" /* As requested */,
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-background-dark font-display text-text-primary">
+    <div
+      class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden"
+    >
+      <div class="layout-container flex h-full grow flex-col">
+        <div class="flex flex-1 justify-center py-5">
+          <div
+            class="layout-content-container flex flex-col w-full max-w-5xl flex-1 px-4 sm:px-6 lg:px-8"
+          >
+            <!-- Community Header -->
+            <div class="relative mb-24">
+              <div
+                class="bg-cover bg-center flex flex-col justify-end overflow-hidden rounded-2xl min-h-[250px] md:min-h-[300px]"
+                data-alt="Abstract blue wavy lines background for the community banner"
+                style="
+                  background-image: linear-gradient(
+                      0deg,
+                      rgba(15, 23, 42, 0.7) 0%,
+                      rgba(15, 23, 42, 0.1) 50%
+                    ),
+                    url('https://lh3.googleusercontent.com/aida-public/AB6AXuAafeJ6BZ2rmJ_Y00sCu6qRrTBPNRHpAw5XVtvNfgP94kRrTyG-s69QlVpYl0ldIbMPDIzwsSRQQ61rpLiZgdui4Qknaj_UCH9T4gUUwQJBBrqYgUWW8tOKm2F9ysfE8lwdVBARauKzXw5HsRGL14gU7IfRY7jFfmCDG8AbYdHI0yccdZ7ugDB5wxqOastutk7e5zQLnxZfuUciCgbWSP92g0l1VwTQ5h1s1XRIZqiCkOZL4yhhIhx6xERZ6mbOJSM_wWWU84L6my3M');
+                "
+              ></div>
+              <div
+                class="absolute -bottom-20 left-4 md:left-8 w-[calc(100%-2rem)] md:w-auto"
+              >
+                <div
+                  class="flex w-full flex-col gap-4 @[520px]:flex-row @[520px]:justify-between @[520px]:items-end"
+                >
+                  <div class="flex gap-4 items-end">
+                    <div
+                      class="bg-center bg-no-repeat aspect-square bg-cover rounded-2xl min-h-32 w-32 md:min-h-40 md:w-40 border-4 border-background-dark -mt-16"
+                      data-alt="Community logo showing an open book with light rays"
+                      style="
+                        background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCP8ZXeVGCFZgo09N_r2QQ9gMCPNRwDCTMeMZGTpAegwCiaeIQMhbgBBmDo-bsQ0TT4tTlJ-8RUsuZA1uIBQseSYjj1KKXjyFdYwqxyQqlH5A082kvf58PEx0PDiFfVOHUJGzhfY8aWiSAURXrC6XwYq08iy7RbXOz_KEr4RXUwTvLadl-uAu31xcXB8oSS1K8EE8HselvmWjRjfc-UDa-S9Zs2hdEk6XL1KqUtNw_EXw-dDLblnTeIuyeQoP4fgjVnB4pdEFnI4dsk');
+                      "
+                    ></div>
+                    <div class="flex flex-col justify-center pb-2">
+                      <p
+                        class="text-text-primary text-2xl md:text-3xl font-bold leading-tight tracking-tight"
+                      >
+                        Book Lovers Club
+                      </p>
+                      <p
+                        class="text-text-secondary text-base font-normal leading-normal"
+                      >
+                        A place where books and people meet.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="absolute right-4 -bottom-14 flex gap-2">
+                  <button
+                  class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-2xl h-10 px-4 bg-primary text-text-primary text-sm font-bold leading-normal tracking-wide transition-colors hover:bg-primary/90"
+                >
+                  <span class="truncate">Join</span>
+                </button>
+                <button
+                  class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-2xl h-10 px-4 bg-surface text-text-primary text-sm font-bold leading-normal tracking-wide transition-colors hover:bg-surface/80"
+                >
+                  <span class="truncate">Share</span>
+                </button>
+                <button
+                  class="p-2.5 rounded-2xl bg-surface text-text-primary transition-colors hover:bg-surface/80"
+                >
+                  <span class="material-symbols-outlined !text-[20px]"
+                    >more_horiz</span
+                  >
+                </button>
+              </div>
+            </div>
+            <!-- End Community Header -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <div class="lg:col-span-2 flex flex-col gap-8">
+                <!-- About Section -->
+                <div class="bg-surface rounded-2xl p-6">
+                  <h2
+                    class="text-text-primary text-xl font-bold leading-tight tracking-tight mb-4"
+                  >
+                    About
+                  </h2>
+                    <p
+                      class="text-text-primary/90 text-base font-normal leading-relaxed mb-4"
+                    >
+                      This is a space for everyone who loves reading. We share favorite books, discuss classic and contemporary literature, and organize online meetups. Join to find new friends and great stories!
+                    </p>
+                  <div
+                    class="flex items-center space-x-6 text-text-secondary text-sm"
+                  >
+                    <div class="flex items-center space-x-2">
+                      <span class="material-symbols-outlined !text-lg"
+                        >groups</span
+                      >
+                      <span>12,458 members</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                      <span class="material-symbols-outlined !text-lg"
+                        >calendar_month</span
+                      >
+                      <span>Created May 15, 2022</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- End About Section -->
+                <!-- Active Discussions Section -->
+                <div class="bg-surface rounded-2xl p-6">
+                  <div class="flex justify-between items-center mb-4">
+                      <h2
+                      class="text-text-primary text-xl font-bold leading-tight tracking-tight"
+                    >
+                      Active discussions
+                    </h2>
+                    <a
+                      class="text-primary text-sm font-semibold hover:underline"
+                      href="#"
+                      >Все обсуждения</a
+                    >
+                  </div>
+                  <ul class="space-y-4">
+                    <li
+                      class="flex items-center gap-4 p-3 -mx-3 rounded-xl transition-colors hover:bg-white/5"
+                    >
+                      <img
+                        class="w-10 h-10 rounded-full object-cover"
+                        data-alt="Avatar of user Elena Petrova"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBC62NE2mxpLoIMierEGUMSxQA8wZWcsdqwPowHP84Za6pzb7bJNZVJlo8N6cDS1345jRBZKhQQRomf8rN3dueEhBAw80M852pPn44_Hg-R4bGJZZSlzsijcYTeJ0vTqT92RDYUwV0E8MGyVbVtih1XzCkF0ePpKuBU4bufs6r7LbCimA20CbA5Btld3KLJo4wqpllr8X6TN04r4S9EszBCOj6CDS9iuPI5lEYhr7sjdukdNPQl7aYtSyFPnsG2Cg_viR2JY_WRyI2R"
+                      />
+                      <div class="flex-1">
+                        <p class="font-semibold text-text-primary">
+                              Thoughts on the ending of "Dune"?
+                            </p>
+                        <p class="text-sm text-text-secondary">
+                          Elena Petrova • 2 hours ago
+                        </p>
+                      </div>
+                      <div
+                        class="flex items-center gap-2 text-text-secondary text-sm"
+                      >
+                        <span class="material-symbols-outlined !text-base"
+                          >chat_bubble_outline</span
+                        >
+                        <span>28</span>
+                      </div>
+                    </li>
+                    <li
+                      class="flex items-center gap-4 p-3 -mx-3 rounded-xl transition-colors hover:bg-white/5"
+                    >
+                      <img
+                        class="w-10 h-10 rounded-full object-cover"
+                        data-alt="Avatar of user Ivan Smirnov"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkjKVypRCqTvjm5uiWBcAOqSHfFuXlyqkazymNS42Mey6dAX7PsZu-tR2zl9yXUdE-bqY5D4geSgjrvZddTBflyGOBA-ekdkq5KJjbOYil86rHBCKbfycAWrvS9UzBRIyES5UpXKI04YuiQeMKTexw_hgnrvn2xwMivpV0hiQ4Q9HACUxu1Q9cmVJvB_ps4jyyaQeUkbZKQ46U3bIeuBEuSuoa_wmSSpu9HK8SyvMUC8tNAtQSVzkQVrTubMGHlaXKeUdbRF4yl-sO"
+                      />
+                      <div class="flex-1">
+                        <p class="font-semibold text-text-primary">
+                          Top 5 fantasy books of 2024
+                        </p>
+                        <p class="text-sm text-text-secondary">
+                          Ivan Smirnov • 1 day ago
+                        </p>
+                      </div>
+                      <div
+                        class="flex items-center gap-2 text-text-secondary text-sm"
+                      >
+                        <span class="material-symbols-outlined !text-base"
+                          >chat_bubble_outline</span
+                        >
+                        <span>112</span>
+                      </div>
+                    </li>
+                    <li
+                      class="flex items-center gap-4 p-3 -mx-3 rounded-xl transition-colors hover:bg-white/5"
+                    >
+                      <img
+                        class="w-10 h-10 rounded-full object-cover"
+                        data-alt="Avatar of user Anna Karenina"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4EDxtjh8tDxpJTWzUhw7VsVvRDTePPkU46rVa7nHXxX2k0ig_LwC_NZQS4PzSGcdL1_8qVBApjpmAPKqyewPPEqO3DvxaSfGQDD6DdAYlgYhimoieQHz2eeOgSV2KsY_kPQ_9ibKucLrRY3f9vxaQh8_TqO0_xxnT7rvBX4aJG5yoXW0fYi1_3n47PEZmiOetHA2hy1FX8Ji41DzKUdcj1lRlKOSBXICJ9p2pC-S4q68RbzKo_M8r-cUc4MbqSPTDyPV2TDqjayJ6"
+                      />
+                      <div class="flex-1">
+                        <p class="font-semibold text-text-primary">
+                          Looking for recommendations on classic literature
+                        </p>
+                        <p class="text-sm text-text-secondary">
+                          Anna Karenina • 3 days ago
+                        </p>
+                      </div>
+                      <h2
+                        class="flex items-center gap-2 text-text-secondary text-sm"
+                      >
+                      Members
+                          >chat_bubble_outline</span
+                        >
+                        <span>45</span>
+                      </div>
+                        >See all</a
+                  </ul>
+                </div>
+                <!-- End Active Discussions Section -->
+              </div>
+              <div class="lg:col-span-1 flex flex-col gap-8">
+                <!-- Members Section -->
+                <div class="bg-surface rounded-2xl p-6">
+                  <div class="flex justify-between items-center mb-4">
+                    <h2
+                      class="text-text-primary text-xl font-bold leading-tight tracking-tight"
+                    >
+                      Участники
+                    </h2>
+                    <a
+                      class="text-primary text-sm font-semibold hover:underline"
+                      href="#"
+                      >Посмотреть всех</a
+                    >
+                  </div>
+                  <div class="flex -space-x-3">
+                    <img
+                      class="inline-block h-12 w-12 rounded-full ring-2 ring-surface object-cover"
+                      data-alt="Community member avatar 1"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-z5-1Nx06UbxCLwBPYHftS9G7Tu5FRg5OTImhNsUPL_s1LzJtkxE9ucvhfXVFpWS72-avGsD-QqLmeI1nw6r5ubfk2C1B31D4voatHuWrevrEoVzJ7ALdyR0jbeNQXWzHuDhjlowAx1BJ1HuJPuW0e6knn1cxlSNv6ollF-85DogaYOraBtxZeNlIdzwPqv8iqahrkgDaDgt57LivP4OJRKmHE4STbqZGNq7QbSZMQW17TvihcxRF1TqRlkPkvKRTrrHJrXnyRh7H"
+                    />
+                    <img
+                      class="inline-block h-12 w-12 rounded-full ring-2 ring-surface object-cover"
+                      data-alt="Community member avatar 2"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPy-Ml9BiwyxlgZldG5VWQe9FBAR-ZN_EAHcNdL4pTUb9zt2Af38_PIWNIE2XFrtZFAs8p7MqCqScHpdR0RwyQauQvyOzE0g4D8Syg7IcukBFtYKUqd3_rz--T49LDkJVLVrCnvKWNscTv4mMevyeAPie_5LjnZiD5iUcSY7SuC5gprqk6uz-isLhDtStQPnu_jpr6fp0OdpdxQgcs-Osxc-NF9JaNDmJCW4wmkHJlN8w5a_lKNxC5ER-IDqO03FO4qNnDgTbrpYy7"
+                    />
+                    <img
+                      class="inline-block h-12 w-12 rounded-full ring-2 ring-surface object-cover"
+                      data-alt="Community member avatar 3"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfAcuM8ix0lIvNWUf46wGuE54JHXtKLC5S49ioJ28iFjNnJsnINu82zg9SmYw2zb8uEba3ELjh5wGTvAfu9QhmtjV4i59AKAHkGESpqzzemdc4XDMS7fa_EY6ixcV6UTXxjhp-ozTWAT4mL-EqaVFosMayW_VTo2DGABEhe2XUG6_eaEbsyKYGjp6kG5XHbk3B0CqEzfeMXMWuqlnjvYXDgE0bwFJtIL9FNHoktWtZhJmwKxQxjySuPnlIzQEKtDSvcDvF024sFdT5"
+                    />
+                    <img
+                      class="inline-block h-12 w-12 rounded-full ring-2 ring-surface object-cover"
+                      data-alt="Community member avatar 4"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9iaNROEjvRLwRFyVbZ-0-9O2B2TRxMUiACDwDo04g3xZP0KnSTFiPHNQwk98SmmJf0x7xhERk5n5Gwn3dJaDZ871JYKoDCT-5eah2sAcEpwJqOEjNiuis0-d9VSqjZBTanray-w06EfoxSgZ3tNwR3ha3LnyqEG2wsd5iqiSDJI8TNmAkWJQM9PNzQH2Vrx97VZ_6yONmCuJogPEcMyCGemzIvI0EGmyjXoXXkiFKUimQcovQz_TDTdIr8q5d28naLDqZVLV7wQz6"
+                    />
+                    <a
+                      class="flex h-12 w-12 items-center justify-center rounded-full bg-primary ring-2 ring-surface text-sm font-bold text-white hover:bg-primary/90"
+                      href="#"
+                      >+12k</a
+                    >
+                  </div>
+                </div>
+                <!-- End Members Section -->
+                <!-- Upcoming Events -->
+                <div class="bg-surface rounded-2xl p-6">
+                    <h2
+                    class="text-text-primary text-xl font-bold leading-tight tracking-tight mb-4"
+                  >
+                    Upcoming events
+                  </h2>
+                  <div class="space-y-4">
+                    <div
+                      class="flex flex-col gap-3 p-3 -mx-3 rounded-xl transition-colors hover:bg-white/5 cursor-pointer"
+                    >
+                      <div
+                        class="aspect-[16/9] w-full bg-cover bg-center rounded-lg"
+                        data-alt="Photo of a cozy library for an online meeting"
+                        style="
+                          background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD0NWTLp_pUCGyej12zioi7BZp_3hlVSnPF97koAxt8xMsNZCgjhQTojvmmc0W14MH39yJ8jT_Ght1K1VK3Q2gPDNMe2iehK1OpQlZ9gXQTIzhoTgvqCx7asXd8t6rveIHSqZZ252xe6sKbW1ZFt8Luos3g1EC9lZAfuMq4WYvlRc2bIi5kaY0bs7NpHJjmdU7qrzLYSYNYpx6XddX4JoezeKyIMX-MtKcX_zxAbf6TFDS7fvhWn3fFLGPiaH_Phuvmw02DMKKLvsaw');
+                        "
+                      ></div>
+                      <div>
+                        <p class="text-sm font-semibold text-primary">
+                          SEPT 28, 7:00 PM (ONLINE)
+                        </p>
+                        <p class="font-bold text-text-primary mt-1">
+                          Online meetup: Discussion of "The Master and Margarita"
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      class="flex flex-col gap-3 p-3 -mx-3 rounded-xl transition-colors hover:bg-white/5 cursor-pointer"
+                    >
+                      <div
+                        class="aspect-[16/9] w-full bg-cover bg-center rounded-lg"
+                        data-alt="Image of a bookshelf for a book exchange event"
+                        style="
+                          background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBc6Vb49QPaQZFckaVhm_twK7d0nkehHoXvr8uHYHcNuXNgT0_w4fHFYmJta6tOllXGzzNPzNiz7aac-bNzOZkQ31vuoEy8E6uW_PSnTg3Xun8LZ2B9szILdc8kubhQ9xcp4SPfm2CvFiLgm0WJGgjKkZ1pUYxO1nBrtubb64eWoo90q9nLzeG2AtbMvQev7ZInHGtNhIEGda_c9klaap_Ttwykf5vtMh1DfPaKcvwcvlzmwEmkPS0HxQFdq_iZGfpXqJFhfcZZXbMO');
+                        "
+                      ></div>
+                      <div>
+                        <p class="text-sm font-semibold text-primary">
+                          OCT 15, 12:00 PM (IN-PERSON)
+                        </p>
+                        <p class="font-bold text-text-primary mt-1">
+                          Big book swap
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- End Upcoming Events -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

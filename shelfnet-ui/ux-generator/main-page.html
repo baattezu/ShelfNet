@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>ShelfNet - Discover, Read, Connect</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+    </style>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#3b82f6" /* blue-500 */,
+              "background-light":
+                "#f5f7f8" /* Not used, but required by prompt */,
+              "background-dark": "#0f172a" /* slate-900 */,
+              surface: "#1e293b" /* slate-800 */,
+              "text-primary": "#f8fafc" /* slate-50 */,
+              "text-secondary": "#94a3b8" /* slate-400 */,
+            },
+            fontFamily: {
+              display: ["Inter", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.75rem",
+              lg: "1rem",
+              xl: "1.5rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-background-dark font-display text-text-primary">
+    <div class="relative flex min-h-screen w-full flex-col">
+      <div class="layout-container flex h-full grow flex-col">
+        <div class="flex flex-1 justify-center py-5">
+          <div
+            class="layout-content-container flex w-full max-w-7xl flex-col px-4 sm:px-6 lg:px-8"
+          >
+            <!-- TopNavBar -->
+            <header
+              class="flex items-center justify-between whitespace-nowrap border-b border-solid border-surface px-4 py-3"
+            >
+              <div class="flex items-center gap-8">
+                <div class="flex items-center gap-3 text-white">
+                  <div class="size-6 text-primary">
+                    <svg
+                      fill="none"
+                      viewbox="0 0 48 48"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z"
+                        fill="currentColor"
+                      ></path>
+                    </svg>
+                  </div>
+                  <h2
+                    class="text-white text-xl font-bold leading-tight tracking-[-0.015em]"
+                  >
+                    ShelfNet
+                  </h2>
+                </div>
+                <nav class="hidden items-center gap-8 lg:flex">
+                  <a
+                    class="text-text-secondary hover:text-text-primary text-sm font-medium leading-normal transition-colors"
+                    href="#"
+                    >Home</a
+                  >
+                  <a
+                    class="text-text-secondary hover:text-text-primary text-sm font-medium leading-normal transition-colors"
+                    href="#"
+                    >Books</a
+                  >
+                  <a
+                    class="text-text-secondary hover:text-text-primary text-sm font-medium leading-normal transition-colors"
+                    href="#"
+                    >Communities</a
+                  >
+                  <a
+                    class="text-text-secondary hover:text-text-primary text-sm font-medium leading-normal transition-colors"
+                    href="#"
+                    >Profile</a
+                  >
+                </nav>
+              </div>
+              <div class="flex items-center justify-end gap-4">
+                <label class="relative hidden sm:block">
+                  <span
+                    class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary"
+                    >search</span
+                  >
+                  <input
+                    class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg border-none bg-surface h-10 placeholder:text-text-secondary pl-10 pr-4 text-sm font-normal leading-normal text-text-primary focus:outline-none focus:ring-2 focus:ring-primary"
+                    placeholder="Search"
+                    value=""
+                  />
+                </label>
+                <div class="flex gap-2">
+                  <button
+                    class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-surface text-text-primary hover:bg-slate-700 text-sm font-bold leading-normal tracking-[0.015em] transition-colors"
+                  >
+                    <span class="truncate">Log In</span>
+                  </button>
+                  <button
+                    class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white hover:bg-blue-600 text-sm font-bold leading-normal tracking-[0.015em] transition-colors"
+                  >
+                    <span class="truncate">Sign Up</span>
+                  </button>
+                </div>
+                <button class="lg:hidden p-2 rounded-lg bg-surface">
+                  <span class="material-symbols-outlined text-text-primary"
+                    >menu</span
+                  >
+                </button>
+              </div>
+            </header>
+            <!-- HeroSection -->
+            <main class="flex flex-col gap-16 md:gap-24 py-16 md:py-24">
+              <div class="@container">
+                <div
+                  class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center"
+                >
+                  <div class="flex flex-col gap-8 text-center lg:text-left">
+                    <div class="flex flex-col gap-4">
+                      <h1
+                        class="text-text-primary text-5xl font-black leading-tight tracking-[-0.033em] md:text-6xl"
+                      >
+                        Discover, Read, Connect.
+                      </h1>
+                      <h2
+                        class="text-text-secondary text-base font-normal leading-normal md:text-lg"
+                      >
+                        Welcome to ShelfNet, the place where books and people
+                        come together. Dive into new worlds and share your
+                        journey with a community of fellow readers.
+                      </h2>
+                    </div>
+                    <div
+                      class="flex flex-wrap gap-4 justify-center lg:justify-start"
+                    >
+                      <button
+                        class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary text-white hover:bg-blue-600 text-base font-bold leading-normal tracking-[0.015em] transition-colors"
+                      >
+                        <span class="truncate">Browse Books</span>
+                      </button>
+                      <button
+                        class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-surface text-text-primary hover:bg-slate-700 text-base font-bold leading-normal tracking-[0.015em] transition-colors"
+                      >
+                        <span class="truncate">Find a Community</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="flex flex-col gap-4">
+                    <h3 class="text-text-primary text-lg font-bold">
+                      Trending Now
+                    </h3>
+                    <div class="grid grid-cols-3 gap-4">
+                      <div
+                        class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg"
+                        data-alt="Book cover for Dune"
+                        style="
+                          background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDAevPagYNl7maClcEs3iGe0rUBdjTnfp60hmD43akNRsaKgDDyQQHuc5Jmxkd1ppjFUjfLmsu40mr5YVRXM0iG17GIjk83yROyQXGMocs5CIgb7q83H9zB-jy4sZ7c-sqHVjV_EVRQZPlrfTZo4kvySXBkNTpbwbxBN23YDBouujMnBQc5T-7gIJCIOHHos-z4FpS9KLsb5t-CvwpUb2fujg85w5C1GqXEhyj5AmVed0gynlvCh7IYWaHNIgNuUhFOtc0bb77rqujN');
+                        "
+                      ></div>
+                      <div
+                        class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg"
+                        data-alt="Book cover for Project Hail Mary"
+                        style="
+                          background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAihk0lu8UMuTarCheKwuyT5_G8--rPIRtNGYOQKPggpKzcFpF-2ut14uslZezYukl7nu7EAb-4WVDICYgpRFyIa-SzeAepdT7ufrfFItKVTWfSZvk-LBfJNqR4FHeKOA7ABxJXkk1u5gPpo4T1kSBMoxQO6jnELY2tthXWPsSoHhHAvWQVjt0JtKuSKqSgoVRYEhBMGw7ksbdgMoQixqsbQRnQ3DIyI7L-fxPPLu2mLXFs9eqkwKyvjONzj6-_zJoyE_NAMYQC_e6Q');
+                        "
+                      ></div>
+                      <div
+                        class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg"
+                        data-alt="Book cover for The Midnight Library"
+                        style="
+                          background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuApafhuXOfBVZwGonMg_nQGlItqB-wVeIW9_9EPeHovk6n89qD5milIpjUH6SJHxINtEsbpRNZQPHIw5rBxrjHO6lI2Q3_6zboJsJrLnOoR0mAVHfrVFnNmy7QicIK3eqe4U7xQKaY0rOtPldUHjfKDz3BgTwsstEhCV4Y4n6vCJv0Z_IiRJYIlk0LutbWXDeqMJ-Zpx0nLLpv8fYpvcExpTCzt88yYBNdJDEPo9rjfRaJcaEI7OQ_ZDWHSHfIV6emgY-2P3BWDymVS');
+                        "
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Popular Books Section -->
+              <section class="flex flex-col gap-4">
+                <h2
+                  class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4"
+                >
+                  Popular on ShelfNet
+                </h2>
+                <div
+                  class="flex gap-3 px-3 overflow-x-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden"
+                >
+                  <button
+                    class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary px-4 text-white text-sm font-medium leading-normal"
+                  >
+                    All
+                  </button>
+                  <button
+                    class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-surface px-4 hover:bg-slate-700 text-text-secondary hover:text-text-primary transition-colors text-sm font-medium leading-normal"
+                  >
+                    Fiction
+                  </button>
+                  <button
+                    class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-surface px-4 hover:bg-slate-700 text-text-secondary hover:text-text-primary transition-colors text-sm font-medium leading-normal"
+                  >
+                    Sci-Fi
+                  </button>
+                  <button
+                    class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-surface px-4 hover:bg-slate-700 text-text-secondary hover:text-text-primary transition-colors text-sm font-medium leading-normal"
+                  >
+                    Non-Fiction
+                  </button>
+                  <button
+                    class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-surface px-4 hover:bg-slate-700 text-text-secondary hover:text-text-primary transition-colors text-sm font-medium leading-normal"
+                  >
+                    Fantasy
+                  </button>
+                  <button
+                    class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-surface px-4 hover:bg-slate-700 text-text-secondary hover:text-text-primary transition-colors text-sm font-medium leading-normal"
+                  >
+                    Biography
+                  </button>
+                </div>
+                <div class="relative">
+                  <div
+                    class="flex overflow-x-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden py-4"
+                  >
+                    <div class="flex items-stretch p-4 gap-6">
+                      <!-- Book Card -->
+                      <div
+                        class="group flex h-full w-48 flex-col gap-3 rounded-lg"
+                      >
+                        <div class="relative w-full overflow-hidden rounded-lg">
+                          <div
+                            class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg"
+                            data-alt="Book cover for Dune"
+                            style="
+                              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuANh5XcCwHZhWragxpaDRmW5QQ1PSAXCVYXUymD-mJ9_WPm0pxvKcvX70vuAf2blMspJUcR3hEN4u7Ttj8M7X06ELNEHcrFU-D2yuSpLemZLRT-Tx36tPFjFj03RiZ0cFVjqfmNIrpHu_iEdkygSsreEWOBiC9fWr94hgsxvwnh8CBthYeB1hvKWe543clnof2ouh8x5ODsBIp3ILjBLuX1D9hs9pAb73s4L7BDvsFwKmzstEPGtYBwT9ziqIzeZ70nTuu8Suqyqftf');
+                            "
+                          ></div>
+                          <div
+                            class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-center items-center p-4 text-center"
+                          >
+                            <div
+                              class="flex items-center gap-1 text-yellow-400"
+                            >
+                              <span class="material-symbols-outlined text-base"
+                                >star</span
+                              ><span class="text-sm font-bold">4.5</span>
+                            </div>
+                            <p class="text-xs text-text-primary mt-2">
+                              "A masterpiece of science fiction that is as
+                              relevant today as it was when it was first
+                              published."
+                            </p>
+                          </div>
+                        </div>
+                        <div>
+                          <p
+                            class="text-text-primary text-base font-medium leading-normal truncate"
+                          >
+                            Dune
+                          </p>
+                          <p
+                            class="text-text-secondary text-sm font-normal leading-normal"
+                          >
+                            Frank Herbert
+                          </p>
+                        </div>
+                      </div>
+                      <!-- More Book Cards... -->
+                      <div
+                        class="group flex h-full w-48 flex-col gap-3 rounded-lg"
+                      >
+                        <div class="relative w-full overflow-hidden rounded-lg">
+                          <div
+                            class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg"
+                            data-alt="Book cover for Project Hail Mary"
+                            style="
+                              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCRW8YLUuAee-BLQKiDnx2NxtfPfejsYrBO29D4-lt5k9pNcwsg7dBRMxprrnK_fitJJZWLisIDJRZhTPUVioLxjGMwEduZ3Q1CjxTtr2ThczXvrn9gYB6b5JgbElBjE9zGyXe6Qo54-bSbfkS_fSGfyAo971QStRVzFjuYnKvRgG80Xa68xoUJD-psOCt9hNNojDTiadzcHtq9P31iLWBkkVOOrK53zAWC91Oa0Rgz4ou8JNTViCSFkrOblR8yu3tKAAg4EW7CXF67');
+                            "
+                          ></div>
+                          <div
+                            class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-center items-center p-4 text-center"
+                          >
+                            <div
+                              class="flex items-center gap-1 text-yellow-400"
+                            >
+                              <span class="material-symbols-outlined text-base"
+                                >star</span
+                              ><span class="text-sm font-bold">4.8</span>
+                            </div>
+                            <p class="text-xs text-text-primary mt-2">
+                              "Absolutely brilliant. A fun, fast-paced, and
+                              scientifically fascinating story."
+                            </p>
+                          </div>
+                        </div>
+                        <div>
+                          <p
+                            class="text-text-primary text-base font-medium leading-normal truncate"
+                          >
+                            Project Hail Mary
+                          </p>
+                          <p
+                            class="text-text-secondary text-sm font-normal leading-normal"
+                          >
+                            Andy Weir
+                          </p>
+                        </div>
+                      </div>
+                      <div
+                        class="group flex h-full w-48 flex-col gap-3 rounded-lg"
+                      >
+                        <div class="relative w-full overflow-hidden rounded-lg">
+                          <div
+                            class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg"
+                            data-alt="Book cover for The Midnight Library"
+                            style="
+                              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBxa8dJH8KnIq7yq2Mk5nC5y_ukXkKsAeZKG-kKGRyTp4gS1OhsGf1XnEYilxMphc0uMTpQKTvYSspqpesCG5LBqcscbB28bCtd3qkd3MwuGXrKKhFGi6tRX9tRFBrW4ZyflKHwlsJK-TJNnV7R169fHum_gQiRWvXBtg-MH9wMaYOV96N6hvo2LoBborbvKpVEh0LBn1YpypXiVUhLrL1jiDm8rqlj36F2cZ-IC3SIHnMqSKwIDWdu0YCaoYGIFIqKu3sa1cGeovV5');
+                            "
+                          ></div>
+                          <div
+                            class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-center items-center p-4 text-center"
+                          >
+                            <div
+                              class="flex items-center gap-1 text-yellow-400"
+                            >
+                              <span class="material-symbols-outlined text-base"
+                                >star</span
+                              ><span class="text-sm font-bold">4.2</span>
+                            </div>
+                            <p class="text-xs text-text-primary mt-2">
+                              "A charming and thought-provoking novel about the
+                              choices that go into a life well-lived."
+                            </p>
+                          </div>
+                        </div>
+                        <div>
+                          <p
+                            class="text-text-primary text-base font-medium leading-normal truncate"
+                          >
+                            The Midnight Library
+                          </p>
+                          <p
+                            class="text-text-secondary text-sm font-normal leading-normal"
+                          >
+                            Matt Haig
+                          </p>
+                        </div>
+                      </div>
+                      <div
+                        class="group flex h-full w-48 flex-col gap-3 rounded-lg"
+                      >
+                        <div class="relative w-full overflow-hidden rounded-lg">
+                          <div
+                            class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg"
+                            data-alt="Book cover for Atomic Habits"
+                            style="
+                              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB86VdetuI4BsKAGBHtbWMVnk3bLloPyv9bt1dSxIMHCn3ZgNh6al6thALFjFk-Rx3z0NUo86j2R7F50QsIm3ZjedXZPWAQF5WndUs0FksOkEVaXWo4_fxbcpFe-fcp_TeJesWWrP3-_zlX3AmjODegLX4V7H-h8dyPmk8BO_MQSqYDZNoJtaRqWQiFotQiy7oj3GqbDKcJAXzcLP_UyjNDHZWZd9kE_y3FTKe9sR067eTa2SZ1fRy3DgzxuswxX2JJBdZcbmW7UNZS');
+                            "
+                          ></div>
+                          <div
+                            class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-center items-center p-4 text-center"
+                          >
+                            <div
+                              class="flex items-center gap-1 text-yellow-400"
+                            >
+                              <span class="material-symbols-outlined text-base"
+                                >star</span
+                              ><span class="text-sm font-bold">4.9</span>
+                            </div>
+                            <p class="text-xs text-text-primary mt-2">
+                              "A practical and inspiring guide to building
+                              better habits."
+                            </p>
+                          </div>
+                        </div>
+                        <div>
+                          <p
+                            class="text-text-primary text-base font-medium leading-normal truncate"
+                          >
+                            Atomic Habits
+                          </p>
+                          <p
+                            class="text-text-secondary text-sm font-normal leading-normal"
+                          >
+                            James Clear
+                          </p>
+                        </div>
+                      </div>
+                      <div
+                        class="group flex h-full w-48 flex-col gap-3 rounded-lg"
+                      >
+                        <div class="relative w-full overflow-hidden rounded-lg">
+                          <div
+                            class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg"
+                            data-alt="Book cover for Circe"
+                            style="
+                              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAXTmZOXKkNUVpRszH3tYKiL9P25M_9uQrMchregLaqgq3c5TLVSAnICWz5qLV7-Z7uBRCYud16yMRoKwdwg5O2NjaHK9ZbaP0g1ECzunnSlg3dUj3sIKUSJoEKr5ct29EUwRlrDwVW3AroUTGArxmlsfu9M7H2_UFWpANcu1Gun691YFP1V4yMU1iyWdy43_fInIM3tGWC81Ho7aqEkpkzEnlOGbfZQ9J4rTuO8jfiZAeA_f2eMBjd2Z2BtTCvSJG6XwNSffz5_VXs');
+                            "
+                          ></div>
+                          <div
+                            class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-center items-center p-4 text-center"
+                          >
+                            <div
+                              class="flex items-center gap-1 text-yellow-400"
+                            >
+                              <span class="material-symbols-outlined text-base"
+                                >star</span
+                              ><span class="text-sm font-bold">4.6</span>
+                            </div>
+                            <p class="text-xs text-text-primary mt-2">
+                              "A mesmerizing retelling of a classic myth. I was
+                              completely captivated."
+                            </p>
+                          </div>
+                        </div>
+                        <div>
+                          <p
+                            class="text-text-primary text-base font-medium leading-normal truncate"
+                          >
+                            Circe
+                          </p>
+                          <p
+                            class="text-text-secondary text-sm font-normal leading-normal"
+                          >
+                            Madeline Miller
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <!-- Popular Communities Section -->
+              <section class="flex flex-col gap-4">
+                <h2
+                  class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4"
+                >
+                  Find Your Reading Group
+                </h2>
+                <div
+                  class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 p-4"
+                >
+                  <!-- Community Card -->
+                  <div
+                    class="flex flex-col items-center gap-4 rounded-xl bg-surface p-6 text-center transition-all hover:bg-slate-700 hover:scale-105"
+                  >
+                    <div
+                      class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-20"
+                      data-alt="Avatar for Sci-Fi Explorers community"
+                      style="
+                        background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCcu1JjmVEMR8rFqq5gCUCLXp1-z42lIA6xOlHRpq-RIYG_l6pKj2B-Z0l8lFrhnhaQIvjMIlthroarzdvTK3dkJrQqTJ5bxm6J2-MBFj0Vn9lTvEHk5t5aA2SJTJCO_kDKMR-hN3-Uu_tfyUxQ9OCAERaA7GGagC7YA7MBgObR2N2ejIkhra9sNt3vms16xTIuyQ8rSh5yJH7XPZTihCRSpZf41kgB__qn-Y97Yj-fJBui7bDvHUlsfD3Q-I15QzjFjoBB6sOTYK-9');
+                      "
+                    ></div>
+                    <div class="flex flex-col">
+                      <p class="font-bold text-text-primary">
+                        Sci-Fi Explorers
+                      </p>
+                      <p class="text-sm text-text-secondary">12.3k Members</p>
+                    </div>
+                    <button
+                      class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white hover:bg-blue-600 text-sm font-bold leading-normal tracking-[0.015em] transition-colors"
+                    >
+                      <span class="truncate">Join</span>
+                    </button>
+                  </div>
+                  <!-- More Community Cards... -->
+                  <div
+                    class="flex flex-col items-center gap-4 rounded-xl bg-surface p-6 text-center transition-all hover:bg-slate-700 hover:scale-105"
+                  >
+                    <div
+                      class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-20"
+                      data-alt="Avatar for Classic Literature Club"
+                      style="
+                        background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD_kuI3lyvvteGI8RJpWIT5ByukpNGNPdNd1lVQ_zhBVxC3SOrMQXdfE5lXqIWNICLqbuUbczS85WMzhmyqgutWUbwIFl3RrPE-5T_p48_SLWbXSdLmzRDlHf2HUKNrnCv11g3OnVaaqI1V2I1uY4E4F0nfE5wf61610JpxS-5cTo6KT1j610LESvgK7XP7jR8SZoEBVAh_WKaXw290oFKsUbXIBVC6tWl8qaf4g6Xi0DgT0YPgMh7UuD5cMlH7nCArPjPwMxkQkCbg');
+                      "
+                    ></div>
+                    <div class="flex flex-col">
+                      <p class="font-bold text-text-primary">
+                        Classic Literature Club
+                      </p>
+                      <p class="text-sm text-text-secondary">8.1k Members</p>
+                    </div>
+                    <button
+                      class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-slate-600 text-white hover:bg-slate-500 text-sm font-bold leading-normal tracking-[0.015em] transition-colors"
+                    >
+                      <span class="truncate">Joined</span>
+                    </button>
+                  </div>
+                  <div
+                    class="flex flex-col items-center gap-4 rounded-xl bg-surface p-6 text-center transition-all hover:bg-slate-700 hover:scale-105"
+                  >
+                    <div
+                      class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-20"
+                      data-alt="Avatar for Modern Fantasy Fans"
+                      style="
+                        background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAWtdOOhfhcENH-FAYaTBJEILeL16T7qou1k7Pb0A6aIgHBfTmqev01PbM0SJTXUbTcJMuau5OKUlXt-XXsP4_KbuvTtsHmYjVI3Q-3Y3Q6QadZhcSh0ykg2lvPZw4mPn6Ln9JxKMMosJNb0qHXOyW1rx3dlDDOBzBFM3D8lCY1CxzOkn9VIbdzQMcCDQNyRxiHfEHtithmVgpNxOtZk-s6xerXvNN3GkHdK2i3V9S_rq55JlOu1S0za_I9T60aByU4zUfesUk-Fw6_');
+                      "
+                    ></div>
+                    <div class="flex flex-col">
+                      <p class="font-bold text-text-primary">
+                        Modern Fantasy Fans
+                      </p>
+                      <p class="text-sm text-text-secondary">25.7k Members</p>
+                    </div>
+                    <button
+                      class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white hover:bg-blue-600 text-sm font-bold leading-normal tracking-[0.015em] transition-colors"
+                    >
+                      <span class="truncate">Join</span>
+                    </button>
+                  </div>
+                </div>
+              </section>
+              <!-- People to Follow -->
+              <section class="flex flex-col gap-4">
+                <h2
+                  class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4"
+                >
+                  Connect With Fellow Readers
+                </h2>
+                <div
+                  class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-4"
+                >
+                  <!-- User Profile Card -->
+                  <div
+                    class="flex flex-col gap-4 rounded-xl bg-surface p-6 transition-colors hover:bg-slate-700"
+                  >
+                    <div class="flex items-center gap-4">
+                      <div
+                        class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12"
+                        data-alt="Profile picture of Elena V."
+                        style="
+                          background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB5ldyRjRFtf5VKg6XxII4Bgve9hqPjINFNgH8u1IuZRkcNsSQ9naLRkLAMpcEuZsfm99y10tE430rVuLP83m4K3FmzSzgHk4TevaazKiE_rPuJSG4uGoAGjYYkW8z3L3v9ZDwcbCz1Ha2mu_iFetmRYt55eRKk6WHOlp-Qtr9Fnh-HnwEGE1dcrf_QgShMbfUEK1WR_taRxwHHVIDYVduklPFbYxZ7Mre7-UKJz80kAElXv2C2T7on5UJGvhlsk7YOG0l_VjHgJ4uu');
+                        "
+                      ></div>
+                      <div>
+                        <p class="font-bold text-text-primary">Elena V.</p>
+                        <p class="text-sm text-text-secondary">@elenavreads</p>
+                      </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                      <div
+                        class="flex h-6 shrink-0 items-center justify-center gap-x-2 rounded-full bg-slate-600/50 px-3"
+                      >
+                        <p class="text-text-secondary text-xs font-medium">
+                          Fantasy
+                        </p>
+                      </div>
+                      <div
+                        class="flex h-6 shrink-0 items-center justify-center gap-x-2 rounded-full bg-slate-600/50 px-3"
+                      >
+                        <p class="text-text-secondary text-xs font-medium">
+                          Romance
+                        </p>
+                      </div>
+                    </div>
+                    <button
+                      class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary text-white hover:bg-blue-600 text-sm font-bold leading-normal tracking-[0.015em] transition-colors"
+                    >
+                      <span class="truncate">Follow</span>
+                    </button>
+                  </div>
+                  <!-- More User Cards... -->
+                  <div
+                    class="flex flex-col gap-4 rounded-xl bg-surface p-6 transition-colors hover:bg-slate-700"
+                  >
+                    <div class="flex items-center gap-4">
+                      <div
+                        class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12"
+                        data-alt="Profile picture of Mark Chen"
+                        style="
+                          background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAV8JrlEP0gepkBbQCRGXckyXi5SAHR-zXyZsTlqe4rcfqDRYaxUDoV1fK5cY7er3EDNlGEZf-WZrXUmwgqdZ12h3rA2wIM2PsKwRao-JxPcLAShMD6C88pLZ9OyNDp4R75IXi2Q5uzez13TRGdvPHYdAAgjo498o5ZOKaPUGssuJNPjB0i_D3M-UlWZl-4BYCaNK4maFFt4yDVj2Sb4pfpptaGismwA0KpvQ0TrMDOA8MIY4soClyn0M0l3jpxKwlgjT5QjfTh4sPb');
+                        "
+                      ></div>
+                      <div>
+                        <p class="font-bold text-text-primary">Mark Chen</p>
+                        <p class="text-sm text-text-secondary">@markchen</p>
+                      </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                      <div
+                        class="flex h-6 shrink-0 items-center justify-center gap-x-2 rounded-full bg-slate-600/50 px-3"
+                      >
+                        <p class="text-text-secondary text-xs font-medium">
+                          Sci-Fi
+                        </p>
+                      </div>
+                      <div
+                        class="flex h-6 shrink-0 items-center justify-center gap-x-2 rounded-full bg-slate-600/50 px-3"
+                      >
+                        <p class="text-text-secondary text-xs font-medium">
+                          Thriller
+                        </p>
+                      </div>
+                    </div>
+                    <button
+                      class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-surface border border-primary text-primary hover:bg-primary/10 text-sm font-bold leading-normal tracking-[0.015em] transition-colors"
+                    >
+                      <span class="truncate">Follow</span>
+                    </button>
+                  </div>
+                  <div
+                    class="flex flex-col gap-4 rounded-xl bg-surface p-6 transition-colors hover:bg-slate-700"
+                  >
+                    <div class="flex items-center gap-4">
+                      <div
+                        class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12"
+                        data-alt="Profile picture of Aisha Khan"
+                        style="
+                          background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDeYrEGfD9qEbKOIui4UEebxSMHOM4b21rGF5GWmLemL3jCMRPBNbZ5B2I_qu1gvOHNOIie8WHCLQnI1B_EtTeQFObgv2OKMZypyK3kGw7BWwOWRafB-jRM38NE5ThTX0pFGrMEVG2zU1lIy8X18i8mFaVY_8ylsUbeMxwKsAobzDgJ7vrMSw29tFS_Qi78TLs58XnCm3RWqQTSgkkHDIGGQsj3Hrbn7cyuFSVMUyl8Ye5vQFbb84GgV1qucMBBdwMInyBuNJjFRTu6');
+                        "
+                      ></div>
+                      <div>
+                        <p class="font-bold text-text-primary">Aisha Khan</p>
+                        <p class="text-sm text-text-secondary">@aishak</p>
+                      </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                      <div
+                        class="flex h-6 shrink-0 items-center justify-center gap-x-2 rounded-full bg-slate-600/50 px-3"
+                      >
+                        <p class="text-text-secondary text-xs font-medium">
+                          Non-Fiction
+                        </p>
+                      </div>
+                      <div
+                        class="flex h-6 shrink-0 items-center justify-center gap-x-2 rounded-full bg-slate-600/50 px-3"
+                      >
+                        <p class="text-text-secondary text-xs font-medium">
+                          History
+                        </p>
+                      </div>
+                    </div>
+                    <button
+                      class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary text-white hover:bg-blue-600 text-sm font-bold leading-normal tracking-[0.015em] transition-colors"
+                    >
+                      <span class="truncate">Follow</span>
+                    </button>
+                  </div>
+                  <div
+                    class="flex flex-col gap-4 rounded-xl bg-surface p-6 transition-colors hover:bg-slate-700"
+                  >
+                    <div class="flex items-center gap-4">
+                      <div
+                        class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12"
+                        data-alt="Profile picture of Sam Jones"
+                        style="
+                          background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA0_oeE455uOpHUxez7O1iA9Xduw29veG7EQUiSC2v2wWXFbC2-TyzAv0hDhGhW76bFM2P5pewhxkMisPDGWOtV49BbBOpD8veXLmZOqhuI98XfaaDZLER-SYqRl6gKEKwkH2nWu9OWqHnWuI4_BFU63YB7xFuLpmqSQkYbDUnEZjqyS3CvEPjdPHOtAuIxVFjss-kEn08OSEn-XhPP7RqdgR1qCWYAFQ8xmV6olid5bbf1yXQxuNAgg2appw0bPWpM9EopCSIdGTvo');
+                        "
+                      ></div>
+                      <div>
+                        <p class="font-bold text-text-primary">Sam Jones</p>
+                        <p class="text-sm text-text-secondary">@samj</p>
+                      </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                      <div
+                        class="flex h-6 shrink-0 items-center justify-center gap-x-2 rounded-full bg-slate-600/50 px-3"
+                      >
+                        <p class="text-text-secondary text-xs font-medium">
+                          Mystery
+                        </p>
+                      </div>
+                      <div
+                        class="flex h-6 shrink-0 items-center justify-center gap-x-2 rounded-full bg-slate-600/50 px-3"
+                      >
+                        <p class="text-text-secondary text-xs font-medium">
+                          Horror
+                        </p>
+                      </div>
+                    </div>
+                    <button
+                      class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-surface border border-primary text-primary hover:bg-primary/10 text-sm font-bold leading-normal tracking-[0.015em] transition-colors"
+                    >
+                      <span class="truncate">Follow</span>
+                    </button>
+                  </div>
+                </div>
+              </section>
+            </main>
+            <!-- Footer -->
+            <footer class="mt-16 border-t border-surface py-12">
+              <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                <div class="col-span-2 lg:col-span-1">
+                  <div class="flex items-center gap-3 text-white">
+                    <div class="size-6 text-primary">
+                      <svg
+                        fill="none"
+                        viewbox="0 0 48 48"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z"
+                          fill="currentColor"
+                        ></path>
+                      </svg>
+                    </div>
+                    <h2
+                      class="text-white text-xl font-bold leading-tight tracking-[-0.015em]"
+                    >
+                      ShelfNet
+                    </h2>
+                  </div>
+                  <p class="text-sm text-text-secondary mt-4">
+                    Where books and people connect.
+                  </p>
+                </div>
+                <div class="flex flex-col gap-3">
+                  <h3 class="font-bold text-text-primary">Platform</h3>
+                  <a
+                    class="text-sm text-text-secondary hover:text-primary transition-colors"
+                    href="#"
+                    >Browse Books</a
+                  >
+                  <a
+                    class="text-sm text-text-secondary hover:text-primary transition-colors"
+                    href="#"
+                    >Find Communities</a
+                  >
+                  <a
+                    class="text-sm text-text-secondary hover:text-primary transition-colors"
+                    href="#"
+                    >Trending</a
+                  >
+                </div>
+                <div class="flex flex-col gap-3">
+                  <h3 class="font-bold text-text-primary">Company</h3>
+                  <a
+                    class="text-sm text-text-secondary hover:text-primary transition-colors"
+                    href="#"
+                    >About Us</a
+                  >
+                  <a
+                    class="text-sm text-text-secondary hover:text-primary transition-colors"
+                    href="#"
+                    >Careers</a
+                  >
+                  <a
+                    class="text-sm text-text-secondary hover:text-primary transition-colors"
+                    href="#"
+                    >Contact</a
+                  >
+                </div>
+                <div class="flex flex-col gap-3">
+                  <h3 class="font-bold text-text-primary">Legal</h3>
+                  <a
+                    class="text-sm text-text-secondary hover:text-primary transition-colors"
+                    href="#"
+                    >Terms of Service</a
+                  >
+                  <a
+                    class="text-sm text-text-secondary hover:text-primary transition-colors"
+                    href="#"
+                    >Privacy Policy</a
+                  >
+                </div>
+                <div class="flex flex-col gap-3">
+                  <h3 class="font-bold text-text-primary">Follow Us</h3>
+                  <a
+                    class="text-sm text-text-secondary hover:text-primary transition-colors"
+                    href="#"
+                    >Twitter</a
+                  >
+                  <a
+                    class="text-sm text-text-secondary hover:text-primary transition-colors"
+                    href="#"
+                    >Instagram</a
+                  >
+                  <a
+                    class="text-sm text-text-secondary hover:text-primary transition-colors"
+                    href="#"
+                    >Facebook</a
+                  >
+                </div>
+              </div>
+              <div class="mt-12 pt-8 border-t border-surface text-center">
+                <p class="text-sm text-text-secondary">
+                  © 2024 ShelfNet. All rights reserved.
+                </p>
+              </div>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

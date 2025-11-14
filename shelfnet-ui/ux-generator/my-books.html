@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Мои книги - ShelfNet</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#3b82f6",
+              "background-light": "#f5f7f8",
+              "background-dark": "#0f172a",
+              surface: {
+                DEFAULT: "#1e293b",
+              },
+              "text-primary": "#f8fafc",
+              "text-secondary": "#94a3b8",
+              "border-color": "#334155",
+              destructive: "#ef4444",
+            },
+            fontFamily: {
+              display: ["Inter", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+              lg: "0.75rem",
+              xl: "1rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+    </style>
+  </head>
+  <body class="bg-background-dark font-display text-text-primary">
+    <div
+      class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden"
+    >
+      <div class="layout-container flex h-full grow flex-col">
+        <div
+          class="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 flex flex-1 justify-center py-5"
+        >
+          <div
+            class="layout-content-container flex flex-col w-full max-w-[1100px] flex-1"
+          >
+            <header
+              class="flex items-center justify-between whitespace-nowrap border-b border-solid border-border-color px-4 sm:px-6 md:px-10 py-3"
+            >
+              <div class="flex items-center gap-4">
+                <div class="size-5 text-primary">
+                  <svg
+                    fill="none"
+                    viewbox="0 0 48 48"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z"
+                      fill="currentColor"
+                    ></path>
+                  </svg>
+                </div>
+                <h2 class="text-text-primary text-xl font-bold tracking-tight">
+                  ShelfNet
+                </h2>
+              </div>
+              <nav
+                class="hidden md:flex flex-1 justify-center items-center gap-9"
+              >
+                <a
+                  class="text-text-secondary hover:text-text-primary text-sm font-medium transition-colors"
+                  href="#"
+                  >Home</a
+                >
+                <a class="text-text-primary text-sm font-medium" href="#"
+                  >My Books</a
+                >
+                <a
+                  class="text-text-secondary hover:text-text-primary text-sm font-medium transition-colors"
+                  href="#"
+                  >Browse</a
+                >
+                <a
+                  class="text-text-secondary hover:text-text-primary text-sm font-medium transition-colors"
+                  href="#"
+                  >Community</a
+                >
+              </nav>
+              <div class="flex items-center gap-4">
+                <div class="flex gap-2">
+                  <button
+                    class="flex cursor-pointer items-center justify-center rounded-full h-10 w-10 bg-surface/70 hover:bg-surface text-text-secondary hover:text-text-primary transition-colors"
+                  >
+                    <span class="material-symbols-outlined text-xl"
+                      >notifications</span
+                    >
+                  </button>
+                  <button
+                    class="flex cursor-pointer items-center justify-center rounded-full h-10 w-10 bg-surface/70 hover:bg-surface text-text-secondary hover:text-text-primary transition-colors"
+                  >
+                    <span class="material-symbols-outlined text-xl"
+                      >chat_bubble</span
+                    >
+                  </button>
+                </div>
+                <div
+                  class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+                  data-alt="User avatar image"
+                  style="
+                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDp4SgLYg6PQXhOWIb_XzJITiGttXPjIJor2t5hSZe7XzIlUR9CtoPKjQGaEbUDhigzeWcrslp0bfqccqPeKGIQWcpgMPF8QDgtakCVG-vl6nSo0Q2k1_-Gs4X-PPsOu7HhNTO5VrqZRoaidAmlsVLBLGejydKm9KeX4Y_d8Qz6sALd20cfi1GJI6bxYv9w0sNxpG4xfEDpccYAiYQUzVtMFVXQ0PP6RdKrVi9siedNdgxYIQzBRgvwKAcGR4Fopq64-E1XNxt6PgBv');
+                  "
+                ></div>
+              </div>
+            </header>
+            <main class="flex flex-col gap-6 p-4 sm:p-6 md:p-8">
+              <div class="flex flex-wrap justify-between items-center gap-4">
+                <h1
+                  class="text-text-primary text-4xl font-black tracking-tighter"
+                >
+                  My books
+                </h1>
+              </div>
+              <div class="flex flex-col gap-4">
+                <div class="border-b border-border-color">
+                  <div class="flex px-4 gap-8">
+                    <a
+                      class="flex flex-col items-center justify-center border-b-[3px] border-primary text-text-primary pb-3 pt-4"
+                      href="#"
+                    >
+                      <p class="text-sm font-bold">Read</p>
+                    </a>
+                    <a
+                      class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-text-secondary hover:text-text-primary transition-colors pb-3 pt-4"
+                      href="#"
+                    >
+                      <p class="text-sm font-bold">Want to read</p>
+                    </a>
+                    <a
+                      class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-text-secondary hover:text-text-primary transition-colors pb-3 pt-4"
+                      href="#"
+                    >
+                      <p class="text-sm font-bold">Favorites</p>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="flex flex-col md:flex-row justify-between items-center gap-4 px-4 py-3"
+              >
+                <div class="relative w-full md:w-auto md:flex-1 md:max-w-xs">
+                  <span
+                    class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary pointer-events-none"
+                    >search</span
+                  >
+                  <input
+                    class="w-full bg-surface border border-border-color rounded-lg h-10 pl-10 pr-4 text-sm text-text-primary placeholder:text-text-secondary focus:ring-2 focus:ring-primary focus:border-primary"
+                    placeholder="Search my books..."
+                    type="search"
+                  />
+                </div>
+                <div class="flex items-center gap-2">
+                  <label
+                    class="text-sm text-text-secondary whitespace-nowrap"
+                    for="sort-by"
+                    >Sort by:</label
+                  >
+                  <select
+                    class="bg-surface border border-border-color rounded-lg h-10 px-3 text-sm text-text-primary focus:ring-2 focus:ring-primary focus:border-primary"
+                    id="sort-by"
+                  >
+                    <option>Date added</option>
+                    <option>Rating</option>
+                    <option>Author</option>
+                    <option>Title</option>
+                  </select>
+                </div>
+              </div>
+              <div
+                class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 p-4"
+              >
+                <div
+                  class="group relative flex flex-col gap-3 pb-3 transition-transform duration-200 ease-in-out hover:-translate-y-1"
+                >
+                  <div
+                    class="w-full bg-center bg-no-repeat aspect-[2/3] bg-cover rounded-lg shadow-lg"
+                    data-alt="Book cover for The Great Gatsby"
+                    style="
+                      background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDf0dPQ3x1rE73Zf0XJVRwe8hB-SrDhjjHv23OI-7DEeAf1fuhc_BU-VwG1uzSRdA-SukyCQwQbwgRQfrx4LLX_T-OkrVeysBnsmhF7swCXBbz9NErwHH_F5z98JwcSSyj6jGbJTNHwkIjzM-3XdtzY4BzhSuDqW-TgCHmuo6LtmNqpAn98VgwuFR-dlPebjWamwZN7PwK1vdDUkEIkLhZAzz1R0N916-GqXp-LR-q6DbUJfDmtM9fyZ0jtfPlaI8CU9RVmIhkWUjbU');
+                    "
+                  ></div>
+                  <div class="absolute top-2 right-2">
+                    <button
+                      class="flex items-center justify-center w-8 h-8 rounded-full bg-black/50 hover:bg-black/70 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                    >
+                      <span class="material-symbols-outlined text-lg"
+                        >more_horiz</span
+                      >
+                    </button>
+                  </div>
+                  <div>
+                    <p
+                      class="text-text-primary text-base font-medium leading-tight truncate"
+                    >
+                      The Great Gatsby
+                    </p>
+                    <p class="text-text-secondary text-sm">
+                      F. Scott Fitzgerald
+                    </p>
+                    <div class="flex items-center text-yellow-400 mt-1">
+                      <span class="material-symbols-outlined text-base"
+                        >star</span
+                      >
+                      <span class="material-symbols-outlined text-base"
+                        >star</span
+                      >
+                      <span class="material-symbols-outlined text-base"
+                        >star</span
+                      >
+                      <span class="material-symbols-outlined text-base"
+                        >star</span
+                      >
+                      <span
+                        class="material-symbols-outlined text-base text-text-secondary"
+                        >star_border</span
+                      >
+                    </div>
+                    <div class="w-full bg-surface rounded-full h-1.5 mt-2">
+                      <div
+                        class="bg-primary h-1.5 rounded-full"
+                        style="width: 100%"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="group relative flex flex-col gap-3 pb-3 transition-transform duration-200 ease-in-out hover:-translate-y-1"
+                >
+                  <div
+                    class="w-full bg-center bg-no-repeat aspect-[2/3] bg-cover rounded-lg shadow-lg"
+                    data-alt="Book cover for To Kill a Mockingbird"
+                    style="
+                      background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBugow7ve5PGSH38VDeYRFdM8u2p0XTh35mvwNitsXjE2rS0u5WwB-J29piCSQB6DQwBhX-jqba7RKARYil77XF7-eExL8G5sBImpL4NQYUyJexdNhd0K12eTTui9MeuCA4VE0Yqz1ii2fsG5s1BoXfYu91E23BCXB-fMn5eENKoe_1uNac1DiSlTRS7LZZvxRB2Kk5Ob53TdmkVtaWQiyMk8yAuxRz4_iRwRznwY3yfUi50_C7YNjJQNv407DdUPgMoBku0A8rOrHk');
+                    "
+                  ></div>
+                  <div class="absolute top-2 right-2">
+                    <button
+                      class="flex items-center justify-center w-8 h-8 rounded-full bg-black/50 hover:bg-black/70 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                    >
+                      <span class="material-symbols-outlined text-lg"
+                        >more_horiz</span
+                      >
+                    </button>
+                  </div>
+                  <div>
+                    <p
+                      class="text-text-primary text-base font-medium leading-tight truncate"
+                    >
+                      To Kill a Mockingbird
+                    </p>
+                    <p class="text-text-secondary text-sm">Harper Lee</p>
+                    <div class="flex items-center text-yellow-400 mt-1">
+                      <span class="material-symbols-outlined text-base"
+                        >star</span
+                      ><span class="material-symbols-outlined text-base"
+                        >star</span
+                      ><span class="material-symbols-outlined text-base"
+                        >star</span
+                      ><span class="material-symbols-outlined text-base"
+                        >star</span
+                      ><span class="material-symbols-outlined text-base"
+                        >star</span
+                      >
+                    </div>
+                    <div class="w-full bg-surface rounded-full h-1.5 mt-2">
+                      <div
+                        class="bg-primary h-1.5 rounded-full"
+                        style="width: 100%"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="group relative flex flex-col gap-3 pb-3 transition-transform duration-200 ease-in-out hover:-translate-y-1"
+                >
+                  <div
+                    class="w-full bg-center bg-no-repeat aspect-[2/3] bg-cover rounded-lg shadow-lg"
+                    data-alt="Book cover for 1984"
+                    style="
+                      background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCzoub-qMPKwyJQnydq1hmlutZ-euiVR98Gqo8BRoMBvpo4p-RjXC9PN0P9Ari4YKIYY9nR-YqNC7VQVa-6XFjqUpTI7GuKB1KMHB_JmKwQcgwPxlQAF8CQcgsFzWHU66v9tJ8Q1OwEd_0IEcQKFGSuuFhK6lZEZ9XeTXfVQrYONoXKMWC5fWSqr7zpiVTsDZUCVtL5sWmOPHGDm4-rP2cXNUYiL0_5E29dtkb7tBkCEtUZNkmN07GF_RxkyMUirDYTscmHPMS9bXvH');
+                    "
+                  ></div>
+                  <div class="absolute top-2 right-2">
+                    <button
+                      class="flex items-center justify-center w-8 h-8 rounded-full bg-black/50 hover:bg-black/70 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                    >
+                      <span class="material-symbols-outlined text-lg"
+                        >more_horiz</span
+                      >
+                    </button>
+                  </div>
+                  <div>
+                    <p
+                      class="text-text-primary text-base font-medium leading-tight truncate"
+                    >
+                      1984
+                    </p>
+                    <p class="text-text-secondary text-sm">George Orwell</p>
+                    <div class="flex items-center text-yellow-400 mt-1">
+                      <span class="material-symbols-outlined text-base"
+                        >star</span
+                      ><span class="material-symbols-outlined text-base"
+                        >star</span
+                      ><span class="material-symbols-outlined text-base"
+                        >star</span
+                      ><span class="material-symbols-outlined text-base"
+                        >star</span
+                      ><span class="material-symbols-outlined text-base"
+                        >star</span
+                      >
+                    </div>
+                    <div class="w-full bg-surface rounded-full h-1.5 mt-2">
+                      <div
+                        class="bg-primary h-1.5 rounded-full"
+                        style="width: 75%"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="group relative flex flex-col gap-3 pb-3 transition-transform duration-200 ease-in-out hover:-translate-y-1"
+                >
+                  <div
+                    class="w-full bg-center bg-no-repeat aspect-[2/3] bg-cover rounded-lg shadow-lg"
+                    data-alt="Book cover for Dune"
+                    style="
+                      background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAhjoaG7tsh8Kr9UvyGd6D3zhrH5jheTkseCVj4u1fNDh6vU_rM-zY25Sr_uaE25ZlsXiKmek9cIMo2x-8JFZ33H2755dRrWK9PFawOleqbNXLfqRG7LVZjVL1b7-z8KyQfs2zwdmNbPTLt9WY6uV5y1Scw09QVJawoyKSaBbA8ZUjb0jHv1hlASzfhpCOgt-SPv0rvuDTQBYitmUyJzP0w4Y_nkEsfNUGkWE80MWhgbrHPLylmM0GXG6mYyrSWd3HfSASC_6jtltbG');
+                    "
+                  ></div>
+                  <div class="absolute top-2 right-2">
+                    <button
+                      class="flex items-center justify-center w-8 h-8 rounded-full bg-black/50 hover:bg-black/70 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                    >
+                      <span class="material-symbols-outlined text-lg"
+                        >more_horiz</span
+                      >
+                    </button>
+                  </div>
+                  <div>
+                    <p
+                      class="text-text-primary text-base font-medium leading-tight truncate"
+                    >
+                      Dune
+                    </p>
+                    <p class="text-text-secondary text-sm">Frank Herbert</p>
+                    <div class="flex items-center text-yellow-400 mt-1">
+                      <span class="material-symbols-outlined text-base"
+                        >star</span
+                      ><span class="material-symbols-outlined text-base"
+                        >star</span
+                      ><span class="material-symbols-outlined text-base"
+                        >star</span
+                      ><span class="material-symbols-outlined text-base"
+                        >star</span
+                      ><span
+                        class="material-symbols-outlined text-base text-text-secondary"
+                        >star_border</span
+                      >
+                    </div>
+                    <div class="w-full bg-surface rounded-full h-1.5 mt-2">
+                      <div
+                        class="bg-primary h-1.5 rounded-full"
+                        style="width: 40%"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="group relative flex flex-col gap-3 pb-3 transition-transform duration-200 ease-in-out hover:-translate-y-1"
+                >
+                  <div
+                    class="w-full bg-center bg-no-repeat aspect-[2/3] bg-cover rounded-lg shadow-lg"
+                    data-alt="Book cover for The Hobbit"
+                    style="
+                      background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCbwFLvdUXyfD51AkTvoz1rzThR8c6GOS1cDwEClTnY1MVPWGF1OV7kBpiqvdauTLaYIJF9MzfrtfIvmTxoGx-3FsWeL2mhKvS4HB8gvY8zELtajwSh_06bagpxnk4XqtyeX3_a6XBviCX60KWXFvdPGurHgvyhkkF712uRErvXYvy4JnBhbOUOEIGS_Dj2yfCN_pr4gR_EZQ71O7j6sJTPm3Grq6xPnBeaE2IZQQjns7E5CzpRa61fi5EjayugcO1LewLeWdstg_48');
+                    "
+                  ></div>
+                  <div class="absolute top-2 right-2">
+                    <button
+                      class="flex items-center justify-center w-8 h-8 rounded-full bg-black/50 hover:bg-black/70 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                    >
+                      <span class="material-symbols-outlined text-lg"
+                        >more_horiz</span
+                      >
+                    </button>
+                  </div>
+                  <div>
+                    <p
+                      class="text-text-primary text-base font-medium leading-tight truncate"
+                    >
+                      The Hobbit
+                    </p>
+                    <p class="text-text-secondary text-sm">J.R.R. Tolkien</p>
+                    <div class="flex items-center text-yellow-400 mt-1">
+                      <span class="material-symbols-outlined text-base"
+                        >star</span
+                      ><span class="material-symbols-outlined text-base"
+                        >star</span
+                      ><span class="material-symbols-outlined text-base"
+                        >star</span
+                      ><span class="material-symbols-outlined text-base"
+                        >star</span
+                      ><span class="material-symbols-outlined text-base"
+                        >star_half</span
+                      >
+                    </div>
+                    <div class="w-full bg-surface rounded-full h-1.5 mt-2">
+                      <div
+                        class="bg-primary h-1.5 rounded-full"
+                        style="width: 100%"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Empty State Example (commented out by default) -->
+              <!-- 
+                        <div class="flex flex-col items-center justify-center text-center gap-6 p-10 sm:p-16 border-2 border-dashed border-border-color rounded-xl bg-surface/30">
+                            <div class="flex items-center justify-center w-20 h-20 rounded-full bg-surface">
+                                <span class="material-symbols-outlined text-5xl text-primary">auto_stories</span>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <h3 class="text-xl font-bold text-text-primary">В этом списке пока нет книг</h3>
+                                <p class="text-text-secondary max-w-sm">Давайте добавим первую, чтобы начать ваше книжное приключение на ShelfNet!</p>
+                            </div>
+                            <button class="flex items-center justify-center gap-2 h-11 px-6 bg-primary text-white font-bold rounded-lg hover:bg-primary/90 transition-colors">
+                                <span class="material-symbols-outlined">add</span>
+                                Найти книги
+                            </button>
+                        </div> 
+                        -->
+            </main>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

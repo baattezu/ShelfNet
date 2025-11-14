@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  --background: #030712;
+  --foreground: #f8fafc;
+  --muted: #0f172a;
+  --muted-foreground: #94a3b8;
+  --accent: #38bdf8;
+  --accent-foreground: #0f172a;
+  --danger: #f87171;
+  --success: #34d399;
+  --border: #1e293b;
+  --ring: var(--accent);
+  --radius: 0.75rem;
+  --card: rgba(15, 23, 42, 0.75);
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), "Inter", system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: rgba(56, 189, 248, 0.35);
+  color: var(--foreground);
+}
+
+.card {
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--card);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 25px 80px rgba(15, 23, 42, 0.45);
+}
+
+.input-base {
+  width: 100%;
+  border-radius: calc(var(--radius) - 0.25rem);
+  border: 1px solid var(--border);
+  background: rgba(2, 6, 23, 0.75);
+  color: var(--foreground);
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  transition: border-color 150ms ease, box-shadow 150ms ease,
+    background 150ms ease;
+}
+
+.input-base:focus {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.35);
+  outline: none;
+}
+
+.input-valid {
+  border-color: var(--success);
+}
+
+.input-invalid {
+  border-color: var(--danger);
+  box-shadow: 0 0 0 1px rgba(248, 113, 113, 0.35);
+}
+
+.field-message {
+  font-size: 0.8rem;
+  margin-top: 0.35rem;
+}
+
+.field-message--danger {
+  color: var(--danger);
+}
+
+.field-message--success {
+  color: var(--success);
+}
+
+.glow-grid {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      circle at 20% 20%,
+      rgba(56, 189, 248, 0.25),
+      transparent 45%
+    ),
+    radial-gradient(circle at 80% 0%, rgba(192, 132, 252, 0.3), transparent 55%);
+  filter: blur(80px);
+  opacity: 0.75;
+  pointer-events: none;
+}

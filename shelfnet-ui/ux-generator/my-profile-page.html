@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>ShelfNet - Профиль пользователя</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#3b82f6",
+              "background-light": "#f5f7f8",
+              "background-dark": "#0f172a",
+              "surface-dark": "#1e293b",
+              "text-dark": "#f8fafc",
+            },
+            fontFamily: {
+              display: ["Inter", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+              lg: "1rem",
+              xl: "1.5rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark font-display text-[#111827] dark:text-text-dark"
+  >
+    <div
+      class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden group/design-root"
+    >
+      <div class="layout-container flex h-full grow flex-col">
+        <div
+          class="flex flex-1 justify-center py-5 sm:py-10 px-4 sm:px-6 lg:px-8"
+        >
+          <div
+            class="layout-content-container flex w-full max-w-7xl flex-1 gap-8"
+          >
+            <!-- Left Sidebar -->
+            <aside
+              class="hidden w-full max-w-xs md:flex flex-col gap-6 sticky top-10 h-max"
+            >
+              <div
+                class="flex h-full flex-col justify-between rounded-xl bg-surface-dark p-6"
+              >
+                <div class="flex flex-col gap-6">
+                  <div class="flex flex-col items-center gap-4 text-center">
+                    <div
+                      class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-24"
+                      data-alt="User profile avatar"
+                      style="
+                        background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBms8RDkLMudoitmXA1EbOy0iZyT6pZ4p-F7x1MY0ajG54-6srD-5V9WOV3acgFhyIs-r3LucLem7hdNZ8y8ciR6mV_5_NVuR5qNQbSaJFzDpV2zbTo9ExbvVNvgkQJ8NN-B2Q-RiTrwJGo3gMlsoMHlh7o2EMoDO_tVLaRh4KmmeGCAgcg4vrWxHrOQjXdLALk8QEKC0yw-wyU2VY15mzT6mbS-FRXwU0CltbsuaXaeSt8Y1gITa7Vhd_RdlB1FWkKHjSmiZ8PougH');
+                      "
+                    ></div>
+                    <div class="flex flex-col">
+                      <h1
+                        class="text-text-dark text-xl font-bold leading-normal"
+                      >
+                        Имя Пользователя
+                      </h1>
+                      <p
+                        class="text-primary text-sm font-medium leading-normal"
+                      >
+                        Библиофил
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors"
+                  >
+                    <span class="truncate">Редактировать профиль</span>
+                  </button>
+                  <div
+                    class="flex flex-col gap-2 border-t border-white/10 pt-6"
+                  >
+                    <div class="grid grid-cols-[auto_1fr] gap-x-4 py-2">
+                      <p
+                        class="text-slate-400 text-sm font-normal leading-normal"
+                      >
+                        Любимые жанры
+                      </p>
+                      <p
+                        class="text-text-dark text-sm font-medium leading-normal"
+                      >
+                        <a class="hover:text-primary transition-colors" href="#"
+                          >Научная фантастика</a
+                        >,
+                        <a class="hover:text-primary transition-colors" href="#"
+                          >Фэнтези</a
+                        >,
+                        <a class="hover:text-primary transition-colors" href="#"
+                          >Классика</a
+                        >
+                      </p>
+                    </div>
+                    <div class="grid grid-cols-[auto_1fr] gap-x-4 py-2">
+                      <p
+                        class="text-slate-400 text-sm font-normal leading-normal"
+                      >
+                        Любимые авторы
+                      </p>
+                      <p
+                        class="text-text-dark text-sm font-medium leading-normal"
+                      >
+                        <a class="hover:text-primary transition-colors" href="#"
+                          >Айзек Азимов</a
+                        >,
+                        <a class="hover:text-primary transition-colors" href="#"
+                          >Дж.Р.Р. Толкин</a
+                        >,
+                        <a class="hover:text-primary transition-colors" href="#"
+                          >Фёдор Достоевский</a
+                        >
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </aside>
+            <!-- Main Content -->
+            <main class="flex flex-col flex-1 gap-8">
+              <!-- Mobile Profile Header -->
+              <div
+                class="flex flex-col md:hidden items-center gap-4 text-center bg-surface-dark p-6 rounded-xl"
+              >
+                <div
+                  class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-24"
+                  data-alt="User profile avatar"
+                  style="
+                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB_xz7eXoyWZjTJDPrOaJx9f33mDJy0_LhDBhmuSWOoHSIKJzW9oP_yT4ReaGJg6FE9OgEe_8TbigoJFUqTpCqIW7aWXpa1QSRHDjGwbwP3A3zjKAAqBu3B82FZ5TVv3WUGF34ZX8KTYOnb_GEqqUc5gLm04ZlLm8-i8wq9n-flIOb2ZAduMw5CTBp3sOOecFIjbwwleQBuKwrjoIx576GNLvpNHfNXel95JKxPoO5O9AHpjp049OD55q2Qc06cWLNZLsCvD7Cm4YnJ');
+                  "
+                ></div>
+                <div class="flex flex-col">
+                  <h1 class="text-text-dark text-xl font-bold leading-normal">
+                    Имя Пользователя
+                  </h1>
+                  <p class="text-primary text-sm font-medium leading-normal">
+                    Библиофил
+                  </p>
+                </div>
+                <button
+                  class="flex w-full min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors"
+                >
+                  <span class="truncate">Редактировать профиль</span>
+                </button>
+              </div>
+              <!-- Profile Stats -->
+              <div class="flex flex-wrap gap-4">
+                <div
+                  class="flex min-w-[120px] flex-1 basis-1/4 flex-col gap-2 rounded-xl border border-white/10 bg-surface-dark p-4 items-start transition-transform hover:-translate-y-1"
+                >
+                  <p
+                    class="text-white tracking-light text-3xl font-bold leading-tight"
+                  >
+                    128
+                  </p>
+                  <div class="flex items-center gap-2">
+                    <p
+                      class="text-slate-400 text-sm font-normal leading-normal"
+                    >
+                      Прочитано книг
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="flex min-w-[120px] flex-1 basis-1/4 flex-col gap-2 rounded-xl border border-white/10 bg-surface-dark p-4 items-start transition-transform hover:-translate-y-1"
+                >
+                  <p
+                    class="text-white tracking-light text-3xl font-bold leading-tight"
+                  >
+                    42
+                  </p>
+                  <div class="flex items-center gap-2">
+                    <p
+                      class="text-slate-400 text-sm font-normal leading-normal"
+                    >
+                      Отзывов написано
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="flex min-w-[120px] flex-1 basis-1/4 flex-col gap-2 rounded-xl border border-white/10 bg-surface-dark p-4 items-start transition-transform hover:-translate-y-1"
+                >
+                  <p
+                    class="text-white tracking-light text-xl font-bold leading-tight"
+                  >
+                    Научная фантастика
+                  </p>
+                  <div class="flex items-center gap-2">
+                    <p
+                      class="text-slate-400 text-sm font-normal leading-normal"
+                    >
+                      Любимый жанр
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <!-- Recommended for you -->
+              <div class="flex flex-col gap-4">
+                <h2
+                  class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4"
+                >
+                  Рекомендовано вам
+                </h2>
+                <div
+                  class="flex overflow-x-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden -mx-4 px-4"
+                >
+                  <div class="flex items-stretch gap-4 pb-2">
+                    <div
+                      class="flex h-full flex-col gap-3 rounded-lg w-40 sm:w-48 group"
+                    >
+                      <div
+                        class="w-full bg-center bg-no-repeat aspect-[2/3] bg-cover rounded-lg flex flex-col shadow-lg transition-transform group-hover:scale-105"
+                        data-alt="Book cover of Dune"
+                        style="
+                          background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCs-PegMYT6_tSpEJ8gBThB1adq32Ew7v5fSTeQAimk7PkYW4o_BThOIj1v3oU8D_m-JxtHpF2xLJjWVhl7LGm5_aQiTHDofnArRx8_P4YCvIdX6dWuo-800nTwFVOiOQ6O-f0Zrc1YIV-4cXn5tDRaTnXy8zpZvSomyba7DDyF1a61e2Xx1DhLAaSQpbb6OkHhQw4zhAVEfU6jw-Icj4-nQ5zhPiBf3JrzDkS_-QLdl2wFRP0pMW_prR8GVRPBmZ4FbUXgiZTYer1g');
+                        "
+                      ></div>
+                      <div>
+                        <p
+                          class="text-white text-base font-medium leading-normal truncate"
+                        >
+                          Дюна
+                        </p>
+                        <p
+                          class="text-slate-400 text-sm font-normal leading-normal"
+                        >
+                          Фрэнк Герберт
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      class="flex h-full flex-col gap-3 rounded-lg w-40 sm:w-48 group"
+                    >
+                      <div
+                        class="w-full bg-center bg-no-repeat aspect-[2/3] bg-cover rounded-lg flex flex-col shadow-lg transition-transform group-hover:scale-105"
+                        data-alt="Book cover of Foundation"
+                        style="
+                          background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDGjx3-BJMo6CWWteTzCbROyHYfHp0IdkSQBCIiSeM06P6caF9JDb3TaBo8lhEc9BMwgDSxQEyw862rSY1Q6Qmwc6Y6BteKHSvmpMSCtxoiBBwsVxhrDzZl59gZXa4c0OoCoTFPn9GjZq6rm52187HJQF48AOjYqFMqD7yJZdT4xMuyDbr6mawWdtBTUJ3OGZMFWVEfUnKH4Nc7K1qNoFaYuGOkqUPFV9JJjLHVgp80Ap3CueoTo3WJyb38MJigWZ886l5yvreUSb6x');
+                        "
+                      ></div>
+                      <div>
+                        <p
+                          class="text-white text-base font-medium leading-normal truncate"
+                        >
+                          Основание
+                        </p>
+                        <p
+                          class="text-slate-400 text-sm font-normal leading-normal"
+                        >
+                          Айзек Азимов
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      class="flex h-full flex-col gap-3 rounded-lg w-40 sm:w-48 group"
+                    >
+                      <div
+                        class="w-full bg-center bg-no-repeat aspect-[2/3] bg-cover rounded-lg flex flex-col shadow-lg transition-transform group-hover:scale-105"
+                        data-alt="Book cover of 1984"
+                        style="
+                          background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBgfQkhgo8u-RuBhk4HwF-jCPNXSSdljhuinlbrsB90lwgcU3XkF_RpHM8-eVf5N9ZH9cNmIEG_-wEjQZqeCyd48RyDzptHG9HaJitrsVOT3agg8JSrApJAbF_CkJFyc3arzMHLsuZkKYr4P13zDLLlnA9F_xVW2DzmVo9lMDFMo-YXViq_SrEZIjECAPgbRsVQHvp42reYspo95uNx-sSDy2iGGiwtDSVL7H1u7_0eHzFqRK6YjUAPuxTIc0XABKx-6nnXxKsJ3u89');
+                        "
+                      ></div>
+                      <div>
+                        <p
+                          class="text-white text-base font-medium leading-normal truncate"
+                        >
+                          1984
+                        </p>
+                        <p
+                          class="text-slate-400 text-sm font-normal leading-normal"
+                        >
+                          Джордж Оруэлл
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      class="flex h-full flex-col gap-3 rounded-lg w-40 sm:w-48 group"
+                    >
+                      <div
+                        class="w-full bg-center bg-no-repeat aspect-[2/3] bg-cover rounded-lg flex flex-col shadow-lg transition-transform group-hover:scale-105"
+                        data-alt="Book cover of Hyperion"
+                        style="
+                          background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAyZ_-ARb0A3_uD1CShuQ4BUg8Ix_fz_KQMrZc1-_6xiMGjogw7u8ZTLN4pg8oP_X01UlmAhpLi4sYXbjzdV0vaqeagEZBsEJYuiO_3e47pDlA8wgiWlqhq2roqofzlBSvrjKlzESJ8F6JAlCtcUgjjcOj7zXtp1kPMkPOpgrKJqEnDV-ba6fkoVqH79AWEzjepaVIINtj1Z17eVMy2qY-g1bekMgjkth-sHzh2IN8-WlocLMTD77TxrduTr1Q25r588k_i2TwdPSdN');
+                        "
+                      ></div>
+                      <div>
+                        <p
+                          class="text-white text-base font-medium leading-normal truncate"
+                        >
+                          Гиперион
+                        </p>
+                        <p
+                          class="text-slate-400 text-sm font-normal leading-normal"
+                        >
+                          Дэн Симмонс
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      class="flex h-full flex-col gap-3 rounded-lg w-40 sm:w-48 group"
+                    >
+                      <div
+                        class="w-full bg-center bg-no-repeat aspect-[2/3] bg-cover rounded-lg flex flex-col shadow-lg transition-transform group-hover:scale-105"
+                        data-alt="Book cover of Project Hail Mary"
+                        style="
+                          background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAEKY-1KysIznohCdeWkNvLSECakCKGpNDVhMvbwvj_iSRY5TtlRc23VP5anyZ6yPEQJJQajmSnZ1MJeds1W0xbc9fkcQQ5ewv_LHBrwC9TEaz2x9c7iHlQu5AXapKg_CSr-TlaAoiJvUZ3sHF9Fs3tNLyt5MMUuNqKZL5ugBhVRaVRkeYoEHBvTl10ydJSAaw85t5cVe4fPQCIflPk8QYMLYQwLEac8gu7bIRaxCEOZn8Etr066FhOhHZ26KYXvzcUOzwgT90OKrhD');
+                        "
+                      ></div>
+                      <div>
+                        <p
+                          class="text-white text-base font-medium leading-normal truncate"
+                        >
+                          Проект Аве Мария
+                        </p>
+                        <p
+                          class="text-slate-400 text-sm font-normal leading-normal"
+                        >
+                          Энди Вейер
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- My communities -->
+              <div class="flex flex-col gap-4">
+                <h2
+                  class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4"
+                >
+                  Мои сообщества
+                </h2>
+                <div
+                  class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+                >
+                  <a
+                    class="flex items-center gap-4 rounded-xl p-4 bg-surface-dark border border-transparent hover:border-primary transition-all"
+                    href="#"
+                  >
+                    <div
+                      class="flex items-center justify-center size-12 rounded-lg bg-indigo-500 text-white"
+                    >
+                      <span
+                        class="material-symbols-outlined text-3xl"
+                        data-icon="rocket_launch"
+                        >rocket_launch</span
+                      >
+                    </div>
+                    <div class="flex flex-col">
+                      <p class="font-semibold text-white">
+                        Клуб научной фантастики
+                      </p>
+                      <p class="text-sm text-slate-400">1,204 участника</p>
+                    </div>
+                  </a>
+                  <a
+                    class="flex items-center gap-4 rounded-xl p-4 bg-surface-dark border border-transparent hover:border-primary transition-all"
+                    href="#"
+                  >
+                    <div
+                      class="flex items-center justify-center size-12 rounded-lg bg-emerald-500 text-white"
+                    >
+                      <span
+                        class="material-symbols-outlined text-3xl"
+                        data-icon="auto_stories"
+                        >auto_stories</span
+                      >
+                    </div>
+                    <div class="flex flex-col">
+                      <p class="font-semibold text-white">Современная проза</p>
+                      <p class="text-sm text-slate-400">876 участников</p>
+                    </div>
+                  </a>
+                  <a
+                    class="flex items-center gap-4 rounded-xl p-4 bg-surface-dark border border-transparent hover:border-primary transition-all"
+                    href="#"
+                  >
+                    <div
+                      class="flex items-center justify-center size-12 rounded-lg bg-rose-500 text-white"
+                    >
+                      <span
+                        class="material-symbols-outlined text-3xl"
+                        data-icon="scrollable_text"
+                        >scrollable_header</span
+                      >
+                    </div>
+                    <div class="flex flex-col">
+                      <p class="font-semibold text-white">Классика на века</p>
+                      <p class="text-sm text-slate-400">3,112 участников</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <!-- Mobile Sidebar Content -->
+              <div
+                class="md:hidden flex flex-col gap-2 bg-surface-dark p-6 rounded-xl border-t border-white/10 mt-4"
+              >
+                <h3 class="text-white text-lg font-bold mb-2">Информация</h3>
+                <div class="grid grid-cols-[auto_1fr] gap-x-4 py-2">
+                  <p class="text-slate-400 text-sm font-normal leading-normal">
+                    Любимые жанры
+                  </p>
+                  <p class="text-text-dark text-sm font-medium leading-normal">
+                    <a class="hover:text-primary transition-colors" href="#"
+                      >Научная фантастика</a
+                    >,
+                    <a class="hover:text-primary transition-colors" href="#"
+                      >Фэнтези</a
+                    >,
+                    <a class="hover:text-primary transition-colors" href="#"
+                      >Классика</a
+                    >
+                  </p>
+                </div>
+                <div class="grid grid-cols-[auto_1fr] gap-x-4 py-2">
+                  <p class="text-slate-400 text-sm font-normal leading-normal">
+                    Любимые авторы
+                  </p>
+                  <p class="text-text-dark text-sm font-medium leading-normal">
+                    <a class="hover:text-primary transition-colors" href="#"
+                      >Айзек Азимов</a
+                    >,
+                    <a class="hover:text-primary transition-colors" href="#"
+                      >Дж.Р.Р. Толкин</a
+                    >,
+                    <a class="hover:text-primary transition-colors" href="#"
+                      >Фёдор Достоевский</a
+                    >
+                  </p>
+                </div>
+              </div>
+            </main>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
